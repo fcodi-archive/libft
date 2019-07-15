@@ -6,11 +6,11 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 13:44:27 by fcodi             #+#    #+#             */
-/*   Updated: 2019/04/28 00:24:02 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/07/06 01:00:45 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {

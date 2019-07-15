@@ -6,11 +6,11 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 16:24:11 by fcodi             #+#    #+#             */
-/*   Updated: 2019/04/28 02:30:53 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/07/06 01:00:45 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
 static int			ft_word_counter(char const *s, char c)
 {
@@ -48,7 +48,7 @@ static void			ft_splitcore(char const *s, char c, char **astr, int nword)
 				wordsize++;
 			if (wordsize <= 0 || !(astr[j] = ft_strnew((size_t)wordsize)))
 			{
-				ft_astrdel(astr, (size_t)j);
+				ft_astr_del(astr);
 				break ;
 			}
 			wordsize = 0;

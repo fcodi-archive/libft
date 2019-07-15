@@ -6,11 +6,11 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 20:18:09 by fcodi             #+#    #+#             */
-/*   Updated: 2019/04/28 00:22:57 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/07/06 01:00:45 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {

@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 00:43:29 by fcodi             #+#    #+#             */
+/*   Created: 2019/05/07 16:39:19 by fcodi             #+#    #+#             */
 /*   Updated: 2019/07/06 01:00:45 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# include <unistd.h>
+# include <stdlib.h>
+# include "libft.h"
+# ifndef BUFF_SIZE
+#  define BUFF_SIZE 32
+# endif
+# define TFILE_HEAD 1
+# define TFILE_NONE 0
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int						get_next_line(const int fd, char **line);
+
+typedef struct s_file	t_file;
+
+struct					s_file
 {
-	int		i;
+	int					fd;
+	char				*string;
+	t_file				*head;
+	t_file				*next;
+};
 
-	i = -1;
-	while (++i < (int)n)
-		if (*((unsigned char *)s + i) == (unsigned char)c)
-			return ((void *)s + i);
-	return (NULL);
-}
+#endif

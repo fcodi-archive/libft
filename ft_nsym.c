@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_nsym.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 00:43:29 by fcodi             #+#    #+#             */
+/*   Created: 2019/07/05 22:18:55 by fcodi             #+#    #+#             */
 /*   Updated: 2019/07/06 01:00:45 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
-{
-	int		i;
+/*
+** Count symbols c in constant array of char string
+*/
 
-	i = -1;
-	while (++i < (int)n)
-		if (*((unsigned char *)s + i) == (unsigned char)c)
-			return ((void *)s + i);
-	return (NULL);
+ssize_t				ft_nsym(const char *string, char c)
+{
+	ssize_t			n;
+	size_t			i;
+
+	if (string)
+	{
+		n = 0;
+		i = 0;
+		while (string[i])
+			if (string[i++] == c)
+				++n;
+	}
+	else
+		return (ERROR);
+	return (n);
 }

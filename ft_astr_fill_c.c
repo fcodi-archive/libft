@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_astr_fill_c.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 00:43:29 by fcodi             #+#    #+#             */
+/*   Created: 2019/07/05 22:33:35 by fcodi             #+#    #+#             */
 /*   Updated: 2019/07/06 01:00:45 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_astr_fill_c(char **astr, const int size, const char c)
 {
-	int		i;
+	int		x;
+	int		y;
 
-	i = -1;
-	while (++i < (int)n)
-		if (*((unsigned char *)s + i) == (unsigned char)c)
-			return ((void *)s + i);
-	return (NULL);
+	y = -1;
+	while (++y < size)
+	{
+		x = -1;
+		while (++x < size)
+			astr[y][x] = c;
+	}
 }
