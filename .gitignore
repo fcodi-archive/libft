@@ -1,0 +1,6 @@
+.*
+cmake-*
+*.a
+*.o
+*.out
+main.c
