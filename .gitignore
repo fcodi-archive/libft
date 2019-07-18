@@ -3,4 +3,5 @@ cmake-*
 *.a
 *.o
 *.out
+*.txt
 main.c
