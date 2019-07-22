@@ -6,16 +6,30 @@
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:18:57 by fcodi             #+#    #+#             */
-/*   Updated: 2019/07/06 01:00:45 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/07/22 14:42:36 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+/*
+** ************************************************************************** **
+** Include
+** ************************************************************************** **
+*/
+
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include "get_next_line.h"
+
+/*
+** ************************************************************************** **
+** Define
+** ************************************************************************** **
+*/
+
 # define NUL '\0'
 # define ERROR -1
 # define TRUE 1
@@ -23,6 +37,30 @@
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
+
+/*
+** ************************************************************************** **
+** Extended functions and definitions
+** ************************************************************************** **
+*/
+
+size_t			ft_uintlen(unsigned int n);
+size_t			ft_strlcat(char *dst, const char *src, size_t size);
+unsigned int	ft_strnlen(unsigned int n);
+ssize_t			ft_nsym(const char *string, char c);
+size_t			ft_strnchri(const char *string, const char c, const size_t i);
+char			**ft_astr_new(const unsigned int size_x,
+							  const unsigned int size_y);
+void			ft_astr_del(char **astr);
+void			ft_astr_fill_c(char **astr, const int size, const char c);
+void			ft_astr_put(char **astr);
+
+
+/*
+** ************************************************************************** **
+** Vanilla functions and definitions
+** ************************************************************************** **
+*/
 
 typedef struct	s_list
 {
@@ -42,18 +80,15 @@ void			ft_strclr(char *s);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
 char			*ft_strstr(const char *haystack, const char *needle);
-size_t			ft_strlcat(char *dst, const char *src, size_t size);
 char			*ft_strdup(const char *s1);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 void			*ft_memmove(void *dest, const void *src, size_t len);
 void			*ft_memset(void *b, int c, size_t len);
-void			ft_astrdel(char **astr, size_t nstr);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			ft_putstr(const char *str);
 void			ft_putstr_fd(const char *s, int fd);
 void			ft_putchar(char c);
-unsigned int	ft_strnlen(unsigned int n);
 void			ft_putchar_fd(char c, int fd);
 void			*ft_memdel(void **ap);
 int				ft_strequ(const char *s1, char const *s2);
@@ -86,7 +121,6 @@ int				ft_isalpha(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
 char			*ft_itoa(int n);
-size_t			ft_uintlen(unsigned int n);
 void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
@@ -97,12 +131,5 @@ void			*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void			ft_strdel(char **as);
 char			*ft_strnew(size_t size);
 size_t			ft_strlen(const char *string);
-ssize_t			ft_nsym(const char *string, char c);
-size_t			ft_strnchri(const char *string, const char c, const size_t i);
-char			**ft_astr_new(const unsigned int size_x,
-		const unsigned int size_y);
-void			ft_astr_del(char **astr);
-void			ft_astr_fill_c(char **astr, const int size, const char c);
-void			ft_astr_put(char **astr);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 17:56:52 by fcodi             #+#    #+#              #
-#    Updated: 2019/07/18 20:34:13 by fcodi            ###   ########.fr        #
+#    Updated: 2019/07/22 16:35:15 by fcodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@
 
 .SECONDARY: $(OBJ)
 
-NAME = libft.a
-
 override ARFLAGS = rc
 
-override CFLAGS += -Wall -Werror -Wextra -I. -O3
+override CFLAGS = -Wall -Werror -Wextra -I.
 
 override CC = gcc
+
+NAME = libft.a
 
 OBJ =   ft_isprint.o ft_lstnew.o ft_memmove.o ft_putnbr_fd.o ft_strcpy.o \
 		ft_strlcat.o ft_strnequ.o ft_strsub.o ft_atoi.o ft_itoa.o \
@@ -50,3 +50,6 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+pclean: fclean
+	$(RM)r cmake-* CMakeLists.txt README.md .DS_Store
