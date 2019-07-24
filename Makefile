@@ -14,7 +14,7 @@
 
 .SECONDARY: $(OBJ)
 
-override ARFLAGS = rc
+override ARFLAGS = rcs
 
 override CFLAGS = -Wall -Werror -Wextra -I.
 
@@ -41,7 +41,6 @@ OBJ =   ft_isprint.o ft_lstnew.o ft_memmove.o ft_putnbr_fd.o ft_strcpy.o \
 all: $(NAME)
 
 $(NAME): $(NAME)($(OBJ))
-	ranlib $@
 
 clean:
 	$(RM) $(OBJ)
