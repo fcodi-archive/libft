@@ -41,7 +41,7 @@ SRC =   ft_isprint.c ft_lstnew.c ft_memmove.c ft_putnbr_fd.c ft_strcpy.c \
 		ft_strcmp.c ft_strjoin.c ft_strncpy.c ft_strstr.c ft_nsym.c\
 		ft_islower.c ft_isspace.c ft_isupper.c ft_uintlen.c get_next_line.c \
 		ft_astr_new.c ft_astr_del.c ft_astr_put.c ft_strnchri.c \
-		ft_astr_fill_c.c
+		ft_astr_fill_c.c ft_garbage_collector.c ft_gc_parray.c ft_gc_utils.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -5,3 +5,5 @@ cmake-*
 *.out
 *.txt
 main.c
+CMakeLists.txt
+README.md
