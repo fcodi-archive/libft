@@ -6,7 +6,7 @@
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:18:57 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/02 21:38:52 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/10/02 21:42:59 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,6 @@
 
 /*
 ** ************************************************************************** **
-** Structs and typedefs
-** ************************************************************************** **
-*/
-
-typedef _Bool	bool;
-
-/*
-** ************************************************************************** **
 ** Extended functions and definitions
 ** ************************************************************************** **
 */
@@ -60,11 +52,10 @@ unsigned int	ft_strnlen(unsigned int n);
 ssize_t			ft_nsym(const char *string, char c);
 size_t			ft_strnchri(const char *string, const char c, const size_t i);
 char			**ft_astr_new(const unsigned int size_x,
-							  const unsigned int size_y);
+				const unsigned int size_y);
 void			ft_astr_del(char **astr);
 void			ft_astr_fill_c(char **astr, const int size, const char c);
 void			ft_astr_put(char **astr);
-
 
 /*
 ** ************************************************************************** **
