@@ -58,4 +58,4 @@ fclean: clean
 re: fclean all
 
 obj: $(OBJ)
-	$(MAKE) -C ../ LIBFT_OBJ="$(OBJ)"
+	$(MAKE) -C ../ LIBFT_OBJ="$(OBJ)" CFLAGS=$(CFLAGS)
