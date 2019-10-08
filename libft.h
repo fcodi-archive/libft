@@ -6,7 +6,7 @@
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:18:57 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/02 21:42:59 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/10/08 20:26:48 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <unistd.h>
 # include "get_next_line.h"
 # include "ft_garbage_collector.h"
+# include "ft_atox_base.h"
 
 /*
 ** ************************************************************************** **
@@ -32,13 +33,17 @@
 */
 
 # define NUL '\0'
-# define ERROR -1
-# define TRUE 1
-# define FALSE 0
+# ifndef LOGICAL
+#  define LOGICAL
+#  define ERROR -1
+#  define TRUE 1
+#  define FALSE 0
+#  define OK 0
+# endif
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
-# define OK 0
+
 
 /*
 ** ************************************************************************** **

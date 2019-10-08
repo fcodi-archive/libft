@@ -6,7 +6,7 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 20:39:17 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/02 21:39:38 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/10/08 20:41:49 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@
 #  define ERROR -1
 #  define OK 0
 # endif
+# ifdef BREAK_THE_NORM
+#  define malloc(X) new(malloc (X))
+# endif
 
 /*
 ** ************************************************************************** **
@@ -47,25 +50,25 @@
 ** ************************************************************************** **
 */
 
-typedef struct s_collector		t_collector;
-typedef struct s_parray			t_parray;
+typedef struct s_collector				t_collector;
+typedef struct s_parray					t_parray;
 
-t_collector						*g_collector;
+t_collector								*g_collector;
 
-struct							s_collector
+struct									s_collector
 {
-	t_parray					*head;
-	t_parray					*tail;
-	t_parray					*current;
+	t_parray							*head;
+	t_parray							*tail;
+	t_parray							*current;
 };
 
-struct							s_parray
+struct									s_parray
 {
-	void						*ptr;
-	_Bool						have_childs;
-	t_parray					*parent;
-	t_parray					*next;
-	t_parray					*prev;
+	void								*ptr;
+	_Bool								have_childs;
+	t_parray							*parent;
+	t_parray							*next;
+	t_parray							*prev;
 };
 
 /*
@@ -74,17 +77,17 @@ struct							s_parray
 ** ************************************************************************** **
 */
 
-_Bool							init_collector(void);
-void							delete(void *ptr);
-void							*new(void *ptr);
-void							*fnew(void *ptr, void *parent_ptr);
-void							destroy_collector(void);
-void							gc_del_parray_all(void);
-void							gc_del_parray(t_parray *current);
-void							gc_destroy_childhood(t_parray *parent);
-t_parray						*gc_new_parray(void);
-t_parray						*gc_get_parray_by_ptr(void *ptr);
-t_parray						*gc_get_parray_by_parent(t_parray *parent,
-								_Bool first);
+__attribute__ ((constructor)) _Bool		init_collector(void);
+void									delete(void *ptr);
+void									*new(void *ptr);
+void									*fnew(void *ptr, void *parent_ptr);
+__attribute__ ((destructor)) void		destroy_collector(void);
+void									gc_del_parray_all(void);
+void									gc_del_parray(t_parray *current);
+void									gc_destroy_childhood(t_parray *parent);
+t_parray								*gc_new_parray(void);
+t_parray								*gc_get_parray_by_ptr(void *ptr);
+t_parray								*gc_get_parray_by_parent
+(t_parray *parent, _Bool first);
 
 #endif

@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_atou_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 21:26:55 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/08 19:59:27 by fcodi            ###   ########.fr       */
+/*   Created: 2019/10/08 20:35:58 by fcodi             #+#    #+#             */
+/*   Updated: 2019/10/08 20:36:50 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_atox_base.h"
 
-void	ft_bzero(void *s, size_t n)
+unsigned		ft_atou_base(const char *number, const unsigned short base)
 {
-	size_t		i;
-
-	i = 0;
-	while (i < n)
-		*((unsigned char *)s + i++) = NUL;
+	return ((unsigned)ft_atollu_base(number, base));
 }

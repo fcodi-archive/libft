@@ -6,7 +6,7 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 20:51:03 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/02 21:38:07 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/10/08 19:59:27 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_parray	*gc_new_parray(void)
 	return (parray);
 }
 
-void		del_parray(t_parray *current)
+void		gc_del_parray(t_parray *current)
 {
 	if (current)
 	{

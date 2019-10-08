@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlenc.c                                       :+:      :+:    :+:   */
+/*   ft_atoll_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/26 21:48:13 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/08 19:59:27 by fcodi            ###   ########.fr       */
+/*   Created: 2019/10/07 23:34:30 by fcodi             #+#    #+#             */
+/*   Updated: 2019/10/08 20:27:54 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_atox_base.h"
 
-size_t	ft_strlenc(const char *s, char c)
+long long	ft_atoll_base(const char *string, const unsigned short base)
 {
-	size_t	size;
+	_Bool				isMinus;
+	unsigned long long	result;
 
-	size = 0;
-	while (s[size] && s[size] != c)
-		++size;
-	return (size);
+	if (!string || base == 0)
+		return (0);
+	*string == '-' ? (isMinus = TRUE) : (isMinus = FALSE);
+	result = ft_atollu_base(string, base);
+	return (isMinus ? ((long long)result) * (-1) : ((long long)result));
 }

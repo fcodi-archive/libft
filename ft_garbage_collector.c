@@ -6,13 +6,13 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 20:50:55 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/02 21:39:22 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/10/08 20:03:33 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_garbage_collector.h"
 
-void					destroy_collector(void)
+__attribute__ ((destructor)) void		destroy_collector(void)
 {
 	if (g_collector)
 	{
@@ -27,7 +27,7 @@ void					destroy_collector(void)
 	}
 }
 
-void					*new(void *ptr)
+void									*new(void *ptr)
 {
 	g_collector->current = g_collector->tail;
 	if (!ptr || !(g_collector->tail = gc_new_parray()))
@@ -43,7 +43,7 @@ void					*new(void *ptr)
 	return (ptr);
 }
 
-void					*fnew(void *ptr, void *parent_ptr)
+void									*fnew(void *ptr, void *parent_ptr)
 {
 	if (new(ptr))
 	{
@@ -55,7 +55,7 @@ void					*fnew(void *ptr, void *parent_ptr)
 	return (ptr);
 }
 
-_Bool					init_collector(void)
+__attribute__ ((constructor)) _Bool		init_collector(void)
 {
 	if (!(g_collector = (t_collector *)malloc(sizeof(t_collector))))
 		return (FALSE);
@@ -67,6 +67,5 @@ _Bool					init_collector(void)
 	}
 	g_collector->tail = g_collector->current;
 	g_collector->head = g_collector->current;
-	atexit(destroy_collector);
 	return (TRUE);
 }
