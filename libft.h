@@ -6,7 +6,7 @@
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:18:57 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/10 15:08:06 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/10/10 16:10:03 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,20 @@
 # include <unistd.h>
 # include "get_next_line.h"
 # include "ft_atox_base.h"
-# ifdef NORMINETTE_ACCEPT_GLOBAL_VARS
+
+/*
+** ************************************************************************** **
+** Conditional expressions
+** ************************************************************************** **
+*/
+
+# ifdef PROJECT_ACCEPT_GLOBAL_VARIABLES
 #  include "ft_garbage_collector.h"
+# endif
+# ifdef DEBUG
+#  pragma GCC diagnostic ignored "-Wunused-parameter"
+#  pragma GCC diagnostic ignored "-Wunused-variable"
+#  pragma GCC diagnostic ignored "-Wreturn-type"
 # endif
 
 /*
@@ -45,7 +57,6 @@
 # define STDOUT 1
 # define STDERR 2
 
-
 /*
 ** ************************************************************************** **
 ** Extended functions and definitions
@@ -62,6 +73,7 @@ char			**ft_astr_new(const unsigned int size_x,
 void			ft_astr_del(char **astr);
 void			ft_astr_fill_c(char **astr, const int size, const char c);
 void			ft_astr_put(char **astr);
+_Bool			ft_ishex(const char c);
 
 /*
 ** ************************************************************************** **
