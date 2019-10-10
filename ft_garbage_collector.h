@@ -6,7 +6,7 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 20:39:17 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/08 20:41:49 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/10/10 15:01:52 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 # define FT_GARBAGE_COLLECTOR_H
 # ifndef GC_FAIL_
-#  define GC_FAIL_ACTION GC_PARENT
+#  define GC_FAIL_ACTION GC_ALL
 #  define GC_PARENT 1
 #  define GC_ALL 2
 #  define GC_ERROR_MALLOC -5
@@ -31,9 +31,6 @@
 #  define FALSE 0
 #  define ERROR -1
 #  define OK 0
-# endif
-# ifdef BREAK_THE_NORM
-#  define malloc(X) new(malloc (X))
 # endif
 
 /*

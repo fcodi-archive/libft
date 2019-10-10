@@ -6,7 +6,7 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 20:50:55 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/08 20:03:33 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/10/10 15:14:28 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ __attribute__ ((destructor)) void		destroy_collector(void)
 		if (g_collector->head)
 			gc_del_parray_all();
 		g_collector->head = NULL;
-		g_collector->current = g_collector->tail;
-		gc_del_parray(g_collector->current);
+		g_collector->current = NULL;
 		g_collector->tail = NULL;
 		free(g_collector);
 		g_collector = NULL;
@@ -37,8 +36,16 @@ void									*new(void *ptr)
 		else
 			return (ptr);
 	}
-	g_collector->tail->prev = g_collector->current;
-	g_collector->current->next = g_collector->tail;
+	if (g_collector->current)
+	{
+		g_collector->tail->prev = g_collector->current;
+		g_collector->current->next = g_collector->tail;
+	}
+	else
+	{
+		g_collector->current = g_collector->tail;
+		g_collector->head = g_collector->tail;
+	}
 	g_collector->tail->ptr = ptr;
 	return (ptr);
 }
@@ -59,13 +66,8 @@ __attribute__ ((constructor)) _Bool		init_collector(void)
 {
 	if (!(g_collector = (t_collector *)malloc(sizeof(t_collector))))
 		return (FALSE);
-	if (!(g_collector->current = gc_new_parray()))
-	{
-		free(g_collector);
-		g_collector = NULL;
-		return (FALSE);
-	}
-	g_collector->tail = g_collector->current;
-	g_collector->head = g_collector->current;
+	g_collector->current = NULL;
+	g_collector->head = NULL;
+	g_collector->tail = NULL;
 	return (TRUE);
 }

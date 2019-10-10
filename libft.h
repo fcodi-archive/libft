@@ -6,7 +6,7 @@
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:18:57 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/08 20:26:48 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/10/10 15:08:06 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 ** ************************************************************************** **
 */
 
-# include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include "get_next_line.h"
-# include "ft_garbage_collector.h"
 # include "ft_atox_base.h"
+# ifdef NORMINETTE_ACCEPT_GLOBAL_VARS
+#  include "ft_garbage_collector.h"
+# endif
 
 /*
 ** ************************************************************************** **

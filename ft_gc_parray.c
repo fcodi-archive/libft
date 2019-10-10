@@ -6,7 +6,7 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 20:51:03 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/08 19:59:27 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/10/10 15:16:00 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		gc_del_parray(t_parray *current)
 
 void		gc_del_parray_all(void)
 {
-	if (g_collector)
+	if (g_collector && g_collector->tail)
 	{
 		if (g_collector->tail->prev)
 		{
@@ -58,13 +58,13 @@ void		gc_del_parray_all(void)
 				if (g_collector->tail->prev)
 					g_collector->tail = g_collector->tail->prev;
 				else
+				{
+					gc_del_parray(g_collector->tail);
 					break ;
+				}
 			}
 		}
 		else
-		{
-			g_collector->current = g_collector->tail;
 			gc_del_parray(g_collector->current);
-		}
 	}
 }
