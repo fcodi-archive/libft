@@ -21,5 +21,5 @@ size_t	ft_strnchri(const char *string, const char c, const size_t i)
 	n = i;
 	while (string[n] && string[n] != c)
 		++n;
-	return (string[n] != c ? ERROR : n);
+	return (string[n] != c ? 0 : n);
 }
