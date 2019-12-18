@@ -6,7 +6,7 @@
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:18:57 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/10 16:10:03 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/12/18 20:31:52 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ char			**ft_astr_new(const unsigned int size_x,
 void			ft_astr_del(char **astr);
 void			ft_astr_fill_c(char **astr, const int size, const char c);
 void			ft_astr_put(char **astr);
+size_t			ft_astr_len(char **astr);
+_Bool			ft_astr_astr(char **astr1, char **astr2);
+_Bool			ft_astr_tolower(char **astr);
 _Bool			ft_ishex(const char c);
 
 /*
