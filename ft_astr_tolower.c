@@ -6,7 +6,7 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 20:32:24 by fcodi             #+#    #+#             */
-/*   Updated: 2019/12/18 20:33:44 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/12/18 21:52:15 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ _Bool	ft_astr_tolower(char **astr)
 		while (astr[n][i])
 			if (ft_isupper(astr[n][i]))
 				astr[n][i] = (char)ft_tolower(astr[n][i]);
+			else
+				i++;
 		n++;
 	}
 	return (TRUE);
