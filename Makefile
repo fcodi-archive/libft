@@ -6,7 +6,7 @@
 #    By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 17:56:52 by fcodi             #+#    #+#              #
-#    Updated: 2019/10/10 19:39:29 by fcodi            ###   ########.fr        #
+#    Updated: 2019/12/18 20:40:39 by fcodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,7 +107,10 @@ SRC =   ft_astr_del.c \
         ft_striteri.c \
         ft_memchr.c \
         ft_memcmp.c \
-        ft_lstadd.c
+        ft_lstadd.c \
+        ft_astr_astr.c \
+        ft_astr_len.c \
+        ft_astr_tolower.c
 
 OBJ = $(SRC:.c=.o)
 
