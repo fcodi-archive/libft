@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 
 #ifndef FT_NO_MATH_H
-# ifndef FT_ATOX_BASE_H
+# ifndef FT_ATOX_BASEVENT_H
 #  include "libft.h"
 #  include <math.h>
-#  define FT_ATOX_BASE_H
+#  define FT_ATOX_BASEVENT_H
 
 unsigned long long	ft_atollu_base
 (const char *string, const unsigned short base);

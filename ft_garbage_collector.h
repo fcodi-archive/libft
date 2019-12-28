@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GARBAGE_COLLECTOR_H
+#ifndef FT_GARBAGEVENT_COLLECTOR_H
 
 /*
 ** ************************************************************************** **
@@ -18,7 +18,7 @@
 ** ************************************************************************** **
 */
 
-# define FT_GARBAGE_COLLECTOR_H
+# define FT_GARBAGEVENT_COLLECTOR_H
 # ifndef GC_FAIL_
 #  define GC_FAIL_ACTION GC_ALL
 #  define GC_PARENT 1

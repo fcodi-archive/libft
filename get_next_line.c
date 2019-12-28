@@ -19,7 +19,7 @@ static t_file	*tfile_new(const int fd, const int flag)
 	if ((tfile = (t_file *)malloc(sizeof(t_file))))
 	{
 		tfile->fd = fd;
-		if (flag == TFILE_HEAD)
+		if (flag == TFILEVENT_HEAD)
 			tfile->head = tfile;
 		else
 			tfile->head = NULL;
@@ -35,7 +35,7 @@ static t_file	*tfile_fd(const int fd, t_file *tfile)
 		tfile = tfile->next;
 	if (tfile && tfile->fd != fd)
 	{
-		if ((tfile->next = tfile_new(fd, TFILE_NONE)) == NULL)
+		if ((tfile->next = tfile_new(fd, TFILEVENT_NONE)) == NULL)
 			return (NULL);
 		tfile->next->head = tfile->head;
 		tfile = tfile->next;
@@ -105,7 +105,7 @@ int				get_next_line(const int fd, char **line)
 		if (!(tfile = tfile_fd(fd, tfile->head)))
 			return (ERROR);
 	}
-	else if (!(tfile = tfile_new(fd, TFILE_HEAD)))
+	else if (!(tfile = tfile_new(fd, TFILEVENT_HEAD)))
 		return (ERROR);
 	return (read_next_line(fd, line, tfile));
 }

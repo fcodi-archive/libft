@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINEVENT_H
+# define GET_NEXT_LINEVENT_H
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft.h"
 # ifndef BUFF_SIZE
 #  define BUFF_SIZE 32
 # endif
-# define TFILE_HEAD 1
-# define TFILE_NONE 0
+# define TFILEVENT_HEAD 1
+# define TFILEVENT_NONE 0
 
 int						get_next_line(const int fd, char **line);
 
