@@ -26,21 +26,6 @@
 
 /*
 ** ************************************************************************** **
-** Conditional expressions
-** ************************************************************************** **
-*/
-
-# ifdef PROJECT_ACCEPT_GLOBAL_VARIABLES
-#  include "ft_garbage_collector.h"
-# endif
-# ifdef DEBUG
-#  pragma GCC diagnostic ignored "-Wunused-parameter"
-#  pragma GCC diagnostic ignored "-Wunused-variable"
-#  pragma GCC diagnostic ignored "-Wreturn-type"
-# endif
-
-/*
-** ************************************************************************** **
 ** Define
 ** ************************************************************************** **
 */

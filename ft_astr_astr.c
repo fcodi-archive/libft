@@ -6,18 +6,16 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 20:29:24 by fcodi             #+#    #+#             */
-/*   Updated: 2019/12/18 20:29:45 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/12/29 13:45:49 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-
 _Bool	ft_astr_astr(char **astr1, char **astr2)
 {
 	size_t		count;
-	size_t 		i;
+	size_t		i;
 	size_t		j;
 
 	if (!astr1 || !*astr1 || !astr2 || !*astr2)

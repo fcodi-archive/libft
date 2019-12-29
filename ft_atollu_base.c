@@ -6,14 +6,14 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 20:32:58 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/08 20:31:09 by fcodi            ###   ########.fr       */
+/*   Updated: 2019/12/29 13:38:03 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_atox_base.h"
 
-unsigned long long	ft_atollu_base
-(const char *string, const unsigned short base)
+unsigned long long			ft_atollu_base(const char *string,
+		const unsigned short base)
 {
 	unsigned long long		number;
 	unsigned short			power;
