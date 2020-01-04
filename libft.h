@@ -54,6 +54,8 @@
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
+# define STRING(X) #X
+# define CONCAT(X,Y) X##Y
 
 /*
 ** ************************************************************************** **
