@@ -6,7 +6,7 @@
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:18:57 by fcodi             #+#    #+#             */
-/*   Updated: 2019/12/29 14:30:57 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/01/04 13:41:34 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,25 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "ft_bool.h"
 # include "get_next_line.h"
 # include "ft_atox_base.h"
+# include "ft_tpointer_keeper.h"
+
+/*
+** ************************************************************************** **
+** Conditional expressions
+** ************************************************************************** **
+*/
+
+# ifdef PROJECT_ACCEPT_GLOBAL_VARIABLES
+#  include "ft_garbage_collector.h"
+# endif
+# ifdef DEBUG
+#  pragma GCC diagnostic ignored "-Wunused-parameter"
+#  pragma GCC diagnostic ignored "-Wunused-variable"
+#  pragma GCC diagnostic ignored "-Wreturn-type"
+# endif
 
 /*
 ** ************************************************************************** **
@@ -31,13 +48,9 @@
 */
 
 # define NUL '\0'
-# ifndef LOGICAL
-#  define LOGICAL
-#  define ERROR -1
-#  define TRUE 1
-#  define FALSE 0
-#  define OK 0
-# endif
+# define LOGICAL
+# define ERROR -1
+# define OK 0
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2

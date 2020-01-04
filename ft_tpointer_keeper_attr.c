@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_astr_len.c                                      :+:      :+:    :+:   */
+/*   ft_tpointer_keeper_attr.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/18 20:30:06 by fcodi             #+#    #+#             */
-/*   Updated: 2020/01/04 15:58:15 by fcodi            ###   ########.fr       */
+/*   Created: 2020/01/04 13:55:07 by fcodi             #+#    #+#             */
+/*   Updated: 2020/01/04 13:55:56 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_tpointer_keeper.h"
 
-/*
-** ft_astr_len count number of strings in array of strings and return it
-*/
-
-size_t	ft_astr_len(char **astr)
+void	init_tpointer_keeper_attr(t_pointer_keeper_attr *attr)
 {
-	size_t	size;
-
-	size = 0;
-	if (!astr || !*astr)
-		return (size);
-	while (astr[size])
-		size++;
-	return (size);
+	attr->size = 0;
+	attr->free_ptr = FALSE;
+	attr->skip_null_ptr = TRUE;
 }
