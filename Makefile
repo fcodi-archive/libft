@@ -108,7 +108,8 @@ SRC =	ft_astr_astr.c \
 		ft_isalnum.c \
 		ft_memmove.c \
 		ft_strmapi.c \
-		ft_isascii.c
+		ft_isascii.c \
+		ft_strndup.c
 
 OBJ = $(SRC:.c=.o)
 

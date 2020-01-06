@@ -77,6 +77,7 @@ size_t			ft_astr_len(char **astr);
 _Bool			ft_astr_astr(char **astr1, char **astr2);
 _Bool			ft_astr_tolower(char **astr);
 _Bool			ft_ishex(const char c);
+char 			*ft_strndup(const char *string, size_t n);
 
 /*
 ** ************************************************************************** **
