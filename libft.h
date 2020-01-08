@@ -6,7 +6,7 @@
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:18:57 by fcodi             #+#    #+#             */
-/*   Updated: 2020/01/04 13:41:34 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/01/08 16:46:59 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ _Bool			ft_astr_astr(char **astr1, char **astr2);
 _Bool			ft_astr_tolower(char **astr);
 _Bool			ft_ishex(const char c);
 char 			*ft_strndup(const char *string, size_t n);
+int 			write_free(int fd, char *string, size_t size);
 
 /*
 ** ************************************************************************** **
