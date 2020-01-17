@@ -340,9 +340,27 @@ typedef union		u_type_punning
 
 typedef union	u_bitfield
 {
-	uint8_t	uint8;
+	uint8_t		uint8;
 	unsigned char	word;
 }	t_bitfield;
+
+typedef union	u_bitfield16
+{
+	uint16_t	uint16;
+	unsigned char	word[sizeof(uint16_t)];
+}				t_bitfield16;
+
+typedef union	u_bitfield32
+{
+	uint32_t	uint32;
+	unsigned char	word[sizeof(uint32_t)];
+}				t_bitfield32;
+
+typedef union	u_bitfield64
+{
+	uint64_t	uint64;
+	unsigned char	word[sizeof(uint64_t)];
+}				t_bitfield64;
 
 # endif
 #endif
