@@ -6,12 +6,40 @@
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:18:57 by fcodi             #+#    #+#             */
-/*   Updated: 2020/01/08 16:46:59 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/01/17 20:03:07 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+/*
+** ************************************************************************** **
+** Conditional expressions
+** ************************************************************************** **
+*/
+
+# ifdef FT_DEBUG
+#  pragma GCC diagnostic ignored "-Wunused-parameter"
+#  pragma GCC diagnostic ignored "-Wunused-variable"
+#  pragma GCC diagnostic ignored "-Wreturn-type"
+# endif
+# ifdef FT_ACCEPT_STDDEF_H
+#  include <stddef.h>
+# endif
+# ifdef NEED_NULL
+#  define __need_NULL
+# endif
+# ifdef NEED_SIZE_T
+#  define __need_size_t
+# endif
+# ifdef NEED_WCHAR_T
+#  define __need_wchar_t
+# endif
+# ifdef NEED_PTRDIFF_T
+#  define __need_ptrdiff_t
+# endif
+
 
 /*
 ** ************************************************************************** **
@@ -25,21 +53,6 @@
 # include "get_next_line.h"
 # include "ft_atox_base.h"
 # include "ft_tpointer_keeper.h"
-
-/*
-** ************************************************************************** **
-** Conditional expressions
-** ************************************************************************** **
-*/
-
-# ifdef PROJECT_ACCEPT_GLOBAL_VARIABLES
-#  include "ft_garbage_collector.h"
-# endif
-# ifdef DEBUG
-#  pragma GCC diagnostic ignored "-Wunused-parameter"
-#  pragma GCC diagnostic ignored "-Wunused-variable"
-#  pragma GCC diagnostic ignored "-Wreturn-type"
-# endif
 
 /*
 ** ************************************************************************** **
