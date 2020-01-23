@@ -19,6 +19,9 @@
 ** ************************************************************************** **
 */
 
+# if BYTE_ORDER != LITTLE_ENDIAN && BYTE_ORDER != BIG_ENDIAN
+#  error Not supported byte order
+# endif
 # ifdef FT_DEBUG
 #  pragma GCC diagnostic ignored "-Wunused-parameter"
 #  pragma GCC diagnostic ignored "-Wunused-variable"
