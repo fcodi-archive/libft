@@ -6,7 +6,7 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 13:17:56 by fcodi             #+#    #+#             */
-/*   Updated: 2019/12/29 14:30:57 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/01/25 20:00:17 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 ** ************************************************************************** **
 */
 
-# ifndef WIDTH
-#  define WIDTH 640
-# endif
-# ifndef HEIGHT
-#  define HEIGHT 480
-# endif
-# ifndef TITLE
-#  define TITLE "TITLE"
-# endif
-# define KEY_COUNT 0x77
-# define BUTTON_COUNT 3
+#  ifndef WIDTH
+#   define WIDTH 640
+#  endif
+#  ifndef HEIGHT
+#   define HEIGHT 480
+#  endif
+#  ifndef TITLE
+#   define TITLE "TITLE"
+#  endif
+#  define KEY_COUNT 0x77
+#  define BUTTON_COUNT 3
 
 /*
 ** ************************************************************************** **
@@ -37,10 +37,10 @@
 ** ************************************************************************** **
 */
 
-# include <math.h>
-# include <mlx.h>
-# include "ft_mlx_events.h"
-# include "libft.h"
+#  include <math.h>
+#  include <mlx.h>
+#  include "ft_mlx_events.h"
+#  include "libft.h"
 
 /*
 ** ************************************************************************** **

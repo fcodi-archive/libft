@@ -4,27 +4,27 @@
 # define FALSE 0
 # define TRUE 1
 
-# ifndef _UINT8_T
-#  define _UINT8_T
+#  ifndef _UINT8_T
+#   define _UINT8_T
 typedef unsigned char	uint8_t;
-# endif
-# ifndef _UINT16_T
-#  define _UINT16_T
+#  endif
+#  ifndef _UINT16_T
+#   define _UINT16_T
 typedef unsigned short	uint16_t;
-# endif
-# ifndef _UINT32_T
-#  define _UINT32_T
+#  endif
+#  ifndef _UINT32_T
+#   define _UINT32_T
 typedef unsigned int	uint32_t;
-# endif
-# ifndef _UINT64_T
-#  define _UINT64_T
+#  endif
+#  ifndef _UINT64_T
+#   define _UINT64_T
 typedef unsigned long long	uint64_t;
-# endif
-# ifndef FT_ACCEPT_STDDEF_H
+#  endif
+#  ifndef FT_ACCEPT_STDDEF_H
 
-# endif
+#  endif
 
-# ifdef FT_DEBUG
+#  ifdef FT_DEBUG
 typedef union	u_bitfield
 {
 	uint8_t	uint8;
@@ -363,4 +363,5 @@ typedef union	u_bitfield64
 }				t_bitfield64;
 
 # endif
+
 #endif
