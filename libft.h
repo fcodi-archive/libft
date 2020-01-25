@@ -6,43 +6,12 @@
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:18:57 by fcodi             #+#    #+#             */
-/*   Updated: 2020/01/17 20:03:07 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/01/25 14:55:30 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
-/*
-** ************************************************************************** **
-** Conditional expressions
-** ************************************************************************** **
-*/
-
-# if BYTE_ORDER != LITTLE_ENDIAN && BYTE_ORDER != BIG_ENDIAN
-#  error Not supported byte order
-# endif
-# ifdef FT_DEBUG
-#  pragma GCC diagnostic ignored "-Wunused-parameter"
-#  pragma GCC diagnostic ignored "-Wunused-variable"
-#  pragma GCC diagnostic ignored "-Wreturn-type"
-# endif
-# ifdef FT_ACCEPT_STDDEF_H
-#  include <stddef.h>
-# endif
-# ifdef NEED_NULL
-#  define __need_NULL
-# endif
-# ifdef NEED_SIZE_T
-#  define __need_size_t
-# endif
-# ifdef NEED_WCHAR_T
-#  define __need_wchar_t
-# endif
-# ifdef NEED_PTRDIFF_T
-#  define __need_ptrdiff_t
-# endif
-
 
 /*
 ** ************************************************************************** **
@@ -52,10 +21,11 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "ft_mlx.h"
 # include "ft_bool.h"
+# include "ft_complex.h"
 # include "get_next_line.h"
 # include "ft_atox_base.h"
-# include "ft_tpointer_keeper.h"
 
 /*
 ** ************************************************************************** **
@@ -64,14 +34,16 @@
 */
 
 # define NUL '\0'
-# define LOGICAL
-# define ERROR -1
-# define OK 0
+# ifndef LOGICAL
+#  define LOGICAL
+#  define ERROR -1
+#  define TRUE 1
+#  define FALSE 0
+#  define OK 0
+# endif
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
-# define STRING(X) #X
-# define CONCAT(X,Y) X##Y
 
 /*
 ** ************************************************************************** **
@@ -93,8 +65,6 @@ size_t			ft_astr_len(char **astr);
 _Bool			ft_astr_astr(char **astr1, char **astr2);
 _Bool			ft_astr_tolower(char **astr);
 _Bool			ft_ishex(const char c);
-char 			*ft_strndup(const char *string, size_t n);
-int 			write_free(int fd, char *string, size_t size);
 
 /*
 ** ************************************************************************** **

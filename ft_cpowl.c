@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atolu_base.c                                    :+:      :+:    :+:   */
+/*   ft_cpowl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 20:38:31 by fcodi             #+#    #+#             */
-/*   Updated: 2020/01/25 14:54:03 by fcodi            ###   ########.fr       */
+/*   Created: 2019/12/27 18:12:54 by fcodi             #+#    #+#             */
+/*   Updated: 2019/12/29 14:30:57 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_atox_base.h"
+#include "ft_complex.h"
 
-unsigned long	ft_atolu_base(const char *number, const unsigned short base)
+t_complex			ft_cpowl(t_complex c0, long double n)
 {
-	return ((unsigned long)ft_atollu_base(number, base));
+	long double		fi;
+	long double		argz;
+
+	fi = atan2l(c0.im, c0.re);
+	argz = powl(ft_cabsl(c0), n);
+	return ((t_complex){argz * cosl(n * fi), argz * sinl(n * fi)});
 }

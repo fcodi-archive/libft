@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atolu_base.c                                    :+:      :+:    :+:   */
+/*   ft_cmul.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 20:38:31 by fcodi             #+#    #+#             */
-/*   Updated: 2020/01/25 14:54:03 by fcodi            ###   ########.fr       */
+/*   Created: 2019/12/27 18:15:35 by fcodi             #+#    #+#             */
+/*   Updated: 2019/12/29 14:30:57 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_atox_base.h"
+#include "ft_complex.h"
 
-unsigned long	ft_atolu_base(const char *number, const unsigned short base)
+t_complex		ft_cmul(t_complex c1, t_complex c2)
 {
-	return ((unsigned long)ft_atollu_base(number, base));
+	return ((t_complex){c1.re * c2.re - c1.im * c2.im,
+						c1.re * c2.im + c1.im * c2.re});
 }
