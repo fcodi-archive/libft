@@ -40,7 +40,7 @@
 # include <math.h>
 # include <mlx.h>
 # include "ft_mlx_events.h"
-# include "libft/libft.h"
+# include "libft.h"
 
 /*
 ** ************************************************************************** **

@@ -6,7 +6,7 @@
 #    By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 17:56:52 by fcodi             #+#    #+#              #
-#    Updated: 2020/01/25 14:54:03 by fcodi            ###   ########.fr        #
+#    Updated: 2020/01/25 14:59:33 by fcodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,7 +110,16 @@ SRC =	ft_astr_astr.c \
 		ft_strmapi.c \
 		ft_isascii.c \
 		ft_strndup.c \
-		write_free.c
+		ft_write_free.c \
+		ft_cpowl.c \
+        ft_cabsl.c \
+        ft_cdiv.c \
+        ft_cadd.c \
+        ft_cmul.c \
+        ft_csub.c \
+        twin.c \
+        tview.c \
+        tview_init.c
 
 OBJ = $(SRC:.c=.o)
 
