@@ -4,25 +4,8 @@
 # define FALSE 0
 # define TRUE 1
 
-#  ifndef _UINT8_T
-#   define _UINT8_T
-typedef unsigned char	uint8_t;
-#  endif
-#  ifndef _UINT16_T
-#   define _UINT16_T
-typedef unsigned short	uint16_t;
-#  endif
-#  ifndef _UINT32_T
-#   define _UINT32_T
-typedef unsigned int	uint32_t;
-#  endif
-#  ifndef _UINT64_T
-#   define _UINT64_T
-typedef unsigned long long	uint64_t;
-#  endif
-#  ifndef FT_ACCEPT_STDDEF_H
-
-#  endif
+# include <stdlib.h>
+# include <stddef.h>
 
 #  ifdef FT_DEBUG
 typedef union	u_bitfield
@@ -322,7 +305,9 @@ typedef union		u_type_punning
 {
 	t_bitfield	bitfield[sizeof(__int128)];
 	t_bitfield128	bitfield128;
-	unsigned char	word[sizeof(__int128)];
+	unsigned char	uword[sizeof(__int128)];
+	char 			word[sizeof(__int128)];
+	wchar_t			awchar[sizeof(__int128) / sizeof(wchar_t)];
 	__int128	int128;
 	uint64_t	uint64;
 	uint32_t	uint32;
