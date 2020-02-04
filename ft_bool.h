@@ -1,6 +1,7 @@
 #ifndef FT_BOOL_H
 # define FT_BOOL_H
 
+# define ERROR -1
 # define FALSE 0
 # define TRUE 1
 

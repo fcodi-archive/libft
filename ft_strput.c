@@ -6,7 +6,7 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 12:27:53 by fcodi             #+#    #+#             */
-/*   Updated: 2020/02/04 12:27:59 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/02/04 12:28:03 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ size_t		ft_strput(const char *string)
 	written_bytes = 0;
 	if (!string)
 		return (written_bytes);
-	return (write(1, string, ft_strlen(string)));
+	return (write(STDOUT, string, ft_strlen(string)));
 }

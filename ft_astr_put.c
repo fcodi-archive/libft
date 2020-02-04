@@ -6,13 +6,13 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 22:31:11 by fcodi             #+#    #+#             */
-/*   Updated: 2020/02/04 12:28:48 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/02/04 18:16:31 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t 		ft_astr_put(const char **astr)
+size_t 		ft_astr_put(char **astr)
 {
 	size_t		written_bytes;
 	size_t		current_written;

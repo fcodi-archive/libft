@@ -6,7 +6,7 @@
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:18:57 by fcodi             #+#    #+#             */
-/*   Updated: 2020/02/04 13:17:30 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/02/04 18:16:31 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,6 @@
 */
 
 # define NUL '\0'
-# ifndef LOGICAL
-#  define LOGICAL
-#  define ERROR -1
-#  define TRUE 1
-#  define FALSE 0
-#  define OK 0
-# endif
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
@@ -62,7 +55,7 @@ char			**ft_astr_new(const unsigned int size_x,
 				const unsigned int size_y);
 void			ft_astr_del(char **astr);
 void			ft_astr_fill_c(char **astr, const int size, const char c);
-size_t			ft_astr_put(const char **astr);
+size_t			ft_astr_put(char **astr);
 size_t			ft_astr_len(char **astr);
 _Bool			ft_astr_astr(char **astr1, char **astr2);
 _Bool			ft_astr_tolower(char **astr);
