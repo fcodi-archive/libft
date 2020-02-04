@@ -6,23 +6,24 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 22:31:11 by fcodi             #+#    #+#             */
-/*   Updated: 2019/10/08 19:59:27 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/02/04 12:28:48 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_astr_put(char **astr)
+size_t 		ft_astr_put(const char **astr)
 {
-	int		i;
+	size_t		written_bytes;
+	size_t		current_written;
+	size_t		i;
 
-	if (astr && *astr)
-	{
-		i = -1;
-		while (astr[++i])
-		{
-			ft_putstr(astr[i]);
-			ft_putchar('\n');
-		}
-	}
+	written_bytes = 0;
+	if (!astr || !*astr)
+		return (written_bytes);
+	i = (size_t)-1;
+	while (astr[++i])
+		if ((current_written = ft_strput(astr[i])) != (size_t)-1)
+			written_bytes += current_written;
+	return (written_bytes);
 }

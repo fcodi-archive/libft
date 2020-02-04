@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_astr_del.c                                      :+:      :+:    :+:   */
+/*   ft_strput.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 22:30:07 by fcodi             #+#    #+#             */
-/*   Updated: 2020/02/04 12:46:09 by fcodi            ###   ########.fr       */
+/*   Created: 2020/02/04 12:27:53 by fcodi             #+#    #+#             */
+/*   Updated: 2020/02/04 12:27:59 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_astr_del(char **astr)
+size_t		ft_strput(const char *string)
 {
-	int		i;
+	size_t		written_bytes;
 
-	if (astr)
-	{
-		i = -1;
-		while (astr[++i])
-		{
-			free(astr[i]);
-			astr[i] = NULL;
-		}
-		free(astr);
-		astr = NULL;
-	}
+	written_bytes = 0;
+	if (!string)
+		return (written_bytes);
+	return (write(1, string, ft_strlen(string)));
 }

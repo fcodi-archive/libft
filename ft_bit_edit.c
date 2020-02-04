@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_astr_del.c                                      :+:      :+:    :+:   */
+/*   ft_bit_edit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 22:30:07 by fcodi             #+#    #+#             */
-/*   Updated: 2020/02/04 12:46:09 by fcodi            ###   ########.fr       */
+/*   Created: 2020/02/04 12:59:23 by fcodi             #+#    #+#             */
+/*   Updated: 2020/02/04 12:59:37 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_bool.h"
 
-void	ft_astr_del(char **astr)
+/**
+**
+** @param word
+** @param bit_index
+**/
+
+void		set_bit(uint8_t *word, unsigned bit_index)
 {
-	int		i;
+	if (bit_index >= 8u)
+		return ;
+	*word |= (1u << bit_index);
+}
 
-	if (astr)
-	{
-		i = -1;
-		while (astr[++i])
-		{
-			free(astr[i]);
-			astr[i] = NULL;
-		}
-		free(astr);
-		astr = NULL;
-	}
+/**
+**
+** @param word
+** @param bit_index
+**/
+
+void		unset_bit(uint8_t *word, unsigned bit_index)
+{
+	if (bit_index >= 8u)
+		return ;
+	*word &= ~(1u << bit_index);
 }

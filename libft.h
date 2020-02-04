@@ -6,7 +6,7 @@
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:18:57 by fcodi             #+#    #+#             */
-/*   Updated: 2020/02/03 13:40:05 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/02/04 13:17:30 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "ft_mlx.h"
+# include "ft_unicode.h"
 # include "ft_bool.h"
 # include "ft_complex.h"
-# include "get_next_line.h"
 # include "ft_atox_base.h"
 # include "ft_tpointer_keeper.h"
+# include "ft_mlx.h"
+# include "get_next_line.h"
 
 /*
 ** ************************************************************************** **
@@ -61,12 +62,13 @@ char			**ft_astr_new(const unsigned int size_x,
 				const unsigned int size_y);
 void			ft_astr_del(char **astr);
 void			ft_astr_fill_c(char **astr, const int size, const char c);
-void			ft_astr_put(char **astr);
+size_t			ft_astr_put(const char **astr);
 size_t			ft_astr_len(char **astr);
 _Bool			ft_astr_astr(char **astr1, char **astr2);
 _Bool			ft_astr_tolower(char **astr);
 _Bool			ft_ishex(const char c);
 char 			*ft_strndup(const char *string, size_t n);
+size_t			ft_strput(const char *string);
 
 /*
 ** ************************************************************************** **

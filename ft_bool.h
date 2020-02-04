@@ -7,7 +7,6 @@
 # include <stdlib.h>
 # include <stddef.h>
 
-#  ifdef FT_DEBUG
 typedef union	u_bitfield
 {
 	uint8_t	uint8;
@@ -23,7 +22,7 @@ typedef union	u_bitfield
 	_Bool	bit6 : 1;
 	_Bool	bit7 : 1;
 	};
-}	t_bitfield;
+}		t_bitfield;
 
 typedef union	u_bitfield16
 {
@@ -48,7 +47,7 @@ typedef union	u_bitfield16
 	_Bool	bit14 : 1;
 	_Bool	bit15 : 1;
 	};
-}	t_bitfield16;
+}		t_bitfield16;
 
 typedef union	u_bitfield32
 {
@@ -89,7 +88,7 @@ typedef union	u_bitfield32
 	_Bool	bit30 : 1;
 	_Bool	bit31 : 1;
 	};
-}	t_bitfield32;
+}		t_bitfield32;
 
 typedef union	u_bitfield64
 {
@@ -162,7 +161,7 @@ typedef union	u_bitfield64
 	_Bool	bit62 : 1;
 	_Bool	bit63 : 1;
 	};
-}	t_bitfield64;
+}		t_bitfield64;
 
 typedef union	u_bitfield128
 {
@@ -299,54 +298,34 @@ typedef union	u_bitfield128
 	_Bool	bit126 : 1;
 	_Bool	bit127 : 1;
 	};
-}	t_bitfield128;
+}		t_bitfield128;
 
-typedef union		u_type_punning
+typedef union	u_type_punning
 {
-	t_bitfield	bitfield[sizeof(__int128)];
+	t_bitfield		bitfield[sizeof(__int128)];
 	t_bitfield128	bitfield128;
 	unsigned char	uword[sizeof(__int128)];
 	char 			word[sizeof(__int128)];
 	wchar_t			awchar[sizeof(__int128) / sizeof(wchar_t)];
-	__int128	int128;
-	uint64_t	uint64;
-	uint32_t	uint32;
-	uint16_t	uint16;
-	uint8_t	uint8;
-	ptrdiff_t	ptrdiff;
-	wchar_t	wchar;
-	size_t	size;
-	float	f_float;
-	double	f_double;
-	long double	f_long_double;
+	__int128		int128;
+	uint64_t		uint64;
+	uint32_t		uint32;
+	uint16_t		uint16;
+	uint8_t			uint8;
+	ptrdiff_t		ptrdiff;
+	wchar_t			wchar;
+	size_t			size;
+	float			f_float;
+	double			f_double;
+	long double		f_long_double;
 }	t_type_punning;
 
-# else
-
-typedef union	u_bitfield
-{
-	uint8_t		uint8;
-	unsigned char	word;
-}	t_bitfield;
-
-typedef union	u_bitfield16
-{
-	uint16_t	uint16;
-	unsigned char	word[sizeof(uint16_t)];
-}				t_bitfield16;
-
-typedef union	u_bitfield32
-{
-	uint32_t	uint32;
-	unsigned char	word[sizeof(uint32_t)];
-}				t_bitfield32;
-
-typedef union	u_bitfield64
-{
-	uint64_t	uint64;
-	unsigned char	word[sizeof(uint64_t)];
-}				t_bitfield64;
-
-# endif
+void			set_bit(uint8_t *word, unsigned bit_index);
+void			unset_bit(uint8_t *word, unsigned bit_index);
+_Bool 			validate_mask(const char *mask);
+_Bool 			set_mask(uint8_t *word, const char *mask);
+char			*get_mask(const uint8_t word);
+int8_t			byte_shift(void);
+uint8_t			byte_start(void);
 
 #endif
