@@ -6,7 +6,7 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 13:42:21 by fcodi             #+#    #+#             */
-/*   Updated: 2020/01/04 14:24:39 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/02/06 18:45:36 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,17 @@ void				destroy_tpointer(t_pointer *tpointer,
 
 static t_pointer	*new_tpointer(void)
 {
+	static size_t	number = 0;
 	t_pointer		*tpointer;
 
 	if (!(tpointer = (t_pointer *)malloc(sizeof(t_pointer))))
 		return (NULL);
+	tpointer->id = 0;
+	tpointer->tag = NULL;
 	tpointer->ptr = NULL;
 	tpointer->next = NULL;
 	tpointer->prev = NULL;
+	tpointer->number = number++;
 	return (tpointer);
 }
 
@@ -60,4 +64,24 @@ _Bool 				add_tpointer(t_pointer_keeper *keeper, void *ptr)
 	}
 	keeper->attr.size++;
 	return (TRUE);
+}
+
+_Bool 				add_tpointer_with_id(
+		t_pointer_keeper *keeper, void *ptr, size_t id)
+{
+	_Bool 		result;
+
+	if ((result = add_tpointer(keeper, ptr)))
+		keeper->tail->id = id;
+	return (result);
+}
+
+_Bool 				add_tpointer_with_tag(
+		t_pointer_keeper *keeper, void *ptr, char *tag)
+{
+	_Bool 		result;
+
+	if ((result = add_tpointer(keeper, ptr)))
+		keeper->tail->tag = tag;
+	return (result);
 }

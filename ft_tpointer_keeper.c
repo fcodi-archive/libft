@@ -6,7 +6,7 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 13:53:21 by fcodi             #+#    #+#             */
-/*   Updated: 2020/01/04 15:44:30 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/02/06 19:39:36 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,18 @@ t_pointer_keeper	*new_tpointer_keeper(void)
 	keeper->current = NULL;
 	init_tpointer_keeper_attr(&keeper->attr);
 	keeper->add = add_tpointer;
+	keeper->add_id = add_tpointer_with_id;
+	keeper->add_tag = add_tpointer_with_tag;
 	keeper->convert = convert_tpointer_keeper_to_massive;
 	keeper->add_massive = add_tpointer_keeper_massive;
 	keeper->destroy_all = destroy_tpointer_all;
 	keeper->add_massive = add_tpointer_keeper_massive;
-	keeper->get_by_number = get_tpointer_by_number;
-	keeper->find_by_ptr = find_tpointer_by_ptr;
+	keeper->find_number = get_tpointer_by_number;
+	keeper->find_ptr = find_tpointer_by_ptr;
+	keeper->find_tag = find_tpointer_by_tag;
+	keeper->find_id = get_tpointer_by_id;
+	keeper->find_id_all = find_tpointer_keeper_by_id;
+	keeper->find_tag_all = find_tpointer_keeper_by_tag;
+	keeper->convert_tag = convert_tpointer_keeper_to_massive_with_tag;
 	return (keeper);
 }

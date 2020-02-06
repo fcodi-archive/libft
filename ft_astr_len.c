@@ -13,7 +13,7 @@
 #include "libft.h"
 
 /*
-** ft_astr_len count number of strings in array of strings and return it
+** ft_astr_len count id of strings in array of strings and return it
 */
 
 size_t	ft_astr_len(char **astr)
