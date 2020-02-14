@@ -8,6 +8,9 @@
 # include <stdlib.h>
 # include <stddef.h>
 
+typedef __int128 			int128_t;
+typedef unsigned __int128	uint128_t;
+
 typedef union	u_bitfield
 {
 	uint8_t	uint8;
@@ -166,8 +169,8 @@ typedef union	u_bitfield64
 
 typedef union	u_bitfield128
 {
-	__int128	int128;
-	unsigned char	word[sizeof(__int128)];
+	int128_t		int128;
+	unsigned char	word[sizeof(int128_t)];
 	struct
 	{
 	_Bool	bit0 : 1;
@@ -301,24 +304,59 @@ typedef union	u_bitfield128
 	};
 }		t_bitfield128;
 
-typedef union	u_type_punning
+typedef union				u_type_punning_float
 {
-	t_bitfield		bitfield[sizeof(__int128)];
-	t_bitfield128	bitfield128;
-	unsigned char	uword[sizeof(__int128)];
-	char 			word[sizeof(__int128)];
-	wchar_t			awchar[sizeof(__int128) / sizeof(wchar_t)];
-	__int128		int128;
-	uint64_t		uint64;
-	uint32_t		uint32;
-	uint16_t		uint16;
-	uint8_t			uint8;
-	ptrdiff_t		ptrdiff;
-	wchar_t			wchar;
-	size_t			size;
-	float			f_float;
-	double			f_double;
-	long double		f_long_double;
+	struct
+	{
+		uint16_t 			fraction : 10;
+		uint8_t				exponent : 5;
+		_Bool 				sign : 1;
+	}						s_half;
+	struct
+	{
+		uint32_t 			fraction : 23;
+		uint16_t			exponent : 8;
+		_Bool 				sign : 1;
+	}						s_single;
+	struct
+	{
+		uint64_t 			fraction : 52;
+		uint16_t 			exponent : 11;
+		_Bool 				sign : 1;
+	}						s_double;
+	struct
+	{
+		uint64_t 			fraction : 63;
+		uint16_t			exponent : 15;
+		_Bool 				sign : 1;
+	}						s_extended;
+	struct
+	{
+		int128_t			fraction : 112;
+		uint16_t 			exponent : 15;
+		_Bool 				sign : 1;
+	}						s_quadriple;
+}							t_type_punning_float;
+
+typedef union				u_type_punning
+{
+	t_type_punning_float	f_punning;
+	t_bitfield				bitfield[sizeof(int128_t)];
+	t_bitfield128			bitfield128;
+	unsigned char			uword[sizeof(int128_t)];
+	char 					word[sizeof(int128_t)];
+	wchar_t					awchar[sizeof(int128_t) / sizeof(wchar_t)];
+	uint128_t		int128;
+	uint64_t				uint64;
+	uint32_t				uint32;
+	uint16_t				uint16;
+	uint8_t					uint8;
+	ptrdiff_t				ptrdiff;
+	wchar_t					wchar;
+	size_t					size;
+	float					f_float;
+	double					f_double;
+	long double				f_long_double;
 }	t_type_punning;
 
 void			set_bit(uint8_t *word, unsigned bit_index);
