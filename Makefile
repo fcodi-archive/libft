@@ -6,7 +6,7 @@
 #    By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 17:56:52 by fcodi             #+#    #+#              #
-#    Updated: 2020/02/27 19:37:43 by fcodi            ###   ########.fr        #
+#    Updated: 2020/02/27 20:03:26 by fcodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,15 @@ VPATH ?= ../$(SRC_DIR) ../$(INCLUDE_DIR)
 
 .SECONDARY: $(OBJ)
 
+NAME ?= libft.a
+
+ifneq (-Wall -Werror -Wextra,$(CFLAGS))
+ifeq ($(suffix $(NAME)),.a)
 override ARFLAGS = rcs
+endif
 override CFLAGS = -Wall -Werror -Wextra -I$(INCLUDE_PATH)
 override CC = gcc
+endif
 
 SRC ?=	ft_astr_astr.c \
 		ft_atoi.c \
@@ -117,8 +123,6 @@ SRC ?=	ft_astr_astr.c \
         tview.c \
         tview_init.c
 
-NAME ?= libft.a
-
 PROJECT_PATH ?= $(shell pwd)
 
 MAKEFILE_PATH ?= $(PROJECT_PATH)/Makefile
@@ -147,13 +151,19 @@ all: $(NAME)
 else
 all: $(OBJ_DIR)
 	$(MAKE) --directory=$(OBJ_PATH) --makefile=$(MAKEFILE_PATH) \
-	PROJECT_PATH=$(PROJECT_PATH) NAME=$(NAME_PATH)
+	PROJECT_PATH=$(PROJECT_PATH) NAME=$(NAME_PATH) ARFLAGS=$(ARFLAGS)
 endif
 
 $(OBJ_DIR):
 	@if [ ! -d $(OBJ_PATH) ]; then mkdir $(OBJ_DIR); fi
 
-$(NAME): $(OBJ) $(NAME)($(OBJ))
+$(NAME): $(OBJ)
+ifeq ($(suffix $(notdir $(NAME))),.a)
+$(NAME): $(NAME)($(OBJ))
+else
+$(NAME):
+	$(CC) $(CFLAGS) -o $@ $(OBJ)
+endif
 
 clean:
 	$(RMDIR) $(OBJ_PATH)
