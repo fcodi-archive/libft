@@ -6,28 +6,24 @@
 #    By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 17:56:52 by fcodi             #+#    #+#              #
-#    Updated: 2020/02/03 08:49:14 by fcodi            ###   ########.fr        #
+#    Updated: 2020/02/27 19:37:43 by fcodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all re clean fclean obj
+.PHONY: all re clean fclean
 
 .SUFFIXES:
-.SUFFIXES: .c  .h .o .a
+.SUFFIXES: .c .h .o .a
+
+VPATH ?= ../$(SRC_DIR) ../$(INCLUDE_DIR)
 
 .SECONDARY: $(OBJ)
 
 override ARFLAGS = rcs
-
-ifeq ($(findstring -Wall -Werror -Wextra -I., $(CFLAGS)),)
-override CFLAGS += -Wall -Werror -Wextra -I.
-endif
-
+override CFLAGS = -Wall -Werror -Wextra -I$(INCLUDE_PATH)
 override CC = gcc
 
-NAME = libft.a
-
-SRC =	ft_astr_astr.c \
+SRC ?=	ft_astr_astr.c \
 		ft_atoi.c \
 		ft_astr_fill_c.c \
 		ft_atol_base.c \
@@ -121,19 +117,48 @@ SRC =	ft_astr_astr.c \
         tview.c \
         tview_init.c
 
-OBJ = $(SRC:.c=.o)
+NAME ?= libft.a
 
+PROJECT_PATH ?= $(shell pwd)
+
+MAKEFILE_PATH ?= $(PROJECT_PATH)/Makefile
+
+NAME_PATH ?= $(PROJECT_PATH)/$(NAME)
+
+INCLUDE_DIR ?= include
+
+INCLUDE_PATH ?= $(PROJECT_PATH)/$(INCLUDE_DIR)
+
+SRC_DIR ?= src
+
+SRC_PATH ?= $(PROJECT_PATH)/$(SRC_PATH)
+
+OBJ_DIR ?= obj
+
+OBJ_PATH ?= $(PROJECT_PATH)/$(OBJ_DIR)
+
+OBJ ?= $(SRC:.c=.o)
+
+RMDIR ?= $(RM)r
+
+all:
+ifeq ($(notdir $(shell pwd)),obj)
 all: $(NAME)
+else
+all: $(OBJ_DIR)
+	$(MAKE) --directory=$(OBJ_PATH) --makefile=$(MAKEFILE_PATH) \
+	PROJECT_PATH=$(PROJECT_PATH) NAME=$(NAME_PATH)
+endif
 
-$(NAME): $(NAME)($(OBJ))
+$(OBJ_DIR):
+	@if [ ! -d $(OBJ_PATH) ]; then mkdir $(OBJ_DIR); fi
+
+$(NAME): $(OBJ) $(NAME)($(OBJ))
 
 clean:
-	$(RM) $(OBJ)
+	$(RMDIR) $(OBJ_PATH)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME_PATH)
 
 re: fclean all
-
-obj: $(OBJ)
-	$(MAKE) -C ../ LIBFT_OBJ="$(OBJ)" CFLAGS=$(CFLAGS)
