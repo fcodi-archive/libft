@@ -7,3 +7,4 @@ cmake-*
 main.c
 CMakeLists.txt
 README.md
+obj

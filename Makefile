@@ -6,7 +6,7 @@
 #    By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 17:56:52 by fcodi             #+#    #+#              #
-#    Updated: 2020/02/27 20:03:26 by fcodi            ###   ########.fr        #
+#    Updated: 2020/02/29 18:07:42 by fcodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,17 @@ VPATH ?= ../$(SRC_DIR) ../$(INCLUDE_DIR)
 
 .SECONDARY: $(OBJ)
 
-NAME ?= libft.a
-
-ifneq (-Wall -Werror -Wextra,$(CFLAGS))
+ifneq ($(CFLAGS),-Wall -Werror -Wextra)
 ifeq ($(suffix $(NAME)),.a)
 override ARFLAGS = rcs
 endif
-override CFLAGS = -Wall -Werror -Wextra -I$(INCLUDE_PATH)
+override CFLAGS = -Wall -Werror -Wextra $(INCLUDE_FLAGS)
 override CC = gcc
 endif
+
+NAME ?= libft.a
+
+PROJECT_PATH ?= $(shell pwd)
 
 SRC ?=	ft_astr_astr.c \
 		ft_atoi.c \
@@ -123,7 +125,11 @@ SRC ?=	ft_astr_astr.c \
         tview.c \
         tview_init.c
 
-PROJECT_PATH ?= $(shell pwd)
+LIB_NAME_LIST ?= $(notdir LINK_PATH) | egrep -o "\b[a-zA-Z]+\b" | sed "s|lib||"
+
+LINK_FLAGS ?= $(addprefix -L,$(LINK_PATH)) $(addprefix -l,$(LINK_NAME_LIST))
+
+INCLUDE_FLAGS ?= $(addprefix -I,$(INCLUDE_PATH))
 
 MAKEFILE_PATH ?= $(PROJECT_PATH)/Makefile
 
@@ -143,14 +149,13 @@ OBJ_PATH ?= $(PROJECT_PATH)/$(OBJ_DIR)
 
 OBJ ?= $(SRC:.c=.o)
 
-RMDIR ?= $(RM)r
+RMDIR = $(RM)r
 
-all:
 ifeq ($(notdir $(shell pwd)),obj)
 all: $(NAME)
 else
 all: $(OBJ_DIR)
-	$(MAKE) --directory=$(OBJ_PATH) --makefile=$(MAKEFILE_PATH) \
+	@$(MAKE) --directory=$(OBJ_PATH) --makefile=$(MAKEFILE_PATH) \
 	PROJECT_PATH=$(PROJECT_PATH) NAME=$(NAME_PATH) ARFLAGS=$(ARFLAGS)
 endif
 
@@ -162,7 +167,7 @@ ifeq ($(suffix $(notdir $(NAME))),.a)
 $(NAME): $(NAME)($(OBJ))
 else
 $(NAME):
-	$(CC) $(CFLAGS) -o $@ $(OBJ)
+	$(CC) $(CFLAGS) $(LINK_FLAGS) -o $@ $(OBJ)
 endif
 
 clean:
