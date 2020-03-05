@@ -6,7 +6,7 @@
 #    By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 17:56:52 by fcodi             #+#    #+#              #
-#    Updated: 2020/02/29 18:07:42 by fcodi            ###   ########.fr        #
+#    Updated: 2020/03/05 17:10:47 by fcodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -125,9 +125,16 @@ SRC ?=	ft_astr_astr.c \
         tview.c \
         tview_init.c
 
-LIB_NAME_LIST ?= $(notdir LINK_PATH) | egrep -o "\b[a-zA-Z]+\b" | sed "s|lib||"
+LIB_PATH_FLAG ?= $(addprefix -L,$(LINK_PATH))
 
-LINK_FLAGS ?= $(addprefix -L,$(LINK_PATH)) $(addprefix -l,$(LINK_NAME_LIST))
+LIB_NAME = $(shell echo $(notdir $(LINK_PATH)) \
+	| grep -E -o "\b[a-zA-Z]+\b" | sed "s|lib||")
+
+LIB_NAME_FLAG ?= $(addprefix -l,$(LIB_NAME))
+
+LINK_FLAGS = $(sort $(UNSORT_LINK_FLAGS))
+
+UNSORT_LINK_FLAGS := $(LINK_FLAGS) $(LIB_PATH_FLAG) $(LIB_NAME_FLAG)
 
 INCLUDE_FLAGS ?= $(addprefix -I,$(INCLUDE_PATH))
 
@@ -154,13 +161,14 @@ RMDIR = $(RM)r
 ifeq ($(notdir $(shell pwd)),obj)
 all: $(NAME)
 else
-all: $(OBJ_DIR)
+all: $(OBJ_PATH)
 	@$(MAKE) --directory=$(OBJ_PATH) --makefile=$(MAKEFILE_PATH) \
-	PROJECT_PATH=$(PROJECT_PATH) NAME=$(NAME_PATH) ARFLAGS=$(ARFLAGS)
+	PROJECT_PATH=$(PROJECT_PATH) NAME=$(NAME_PATH) ARFLAGS=$(ARFLAGS) \
+	LINK_FLAGS="$(LINK_FLAGS)" LIB_NAME_LIST="$(LIB_NAME_LIST)"
 endif
 
-$(OBJ_DIR):
-	@if [ ! -d $(OBJ_PATH) ]; then mkdir $(OBJ_DIR); fi
+$(OBJ_PATH):
+	@if [ ! -d $(OBJ_PATH) ]; then mkdir $(OBJ_PATH); fi
 
 $(NAME): $(OBJ)
 ifeq ($(suffix $(notdir $(NAME))),.a)
