@@ -6,7 +6,7 @@
 #    By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 17:56:52 by fcodi             #+#    #+#              #
-#    Updated: 2020/03/05 17:10:47 by fcodi            ###   ########.fr        #
+#    Updated: 2020/03/05 17:10:56 by fcodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,8 +127,7 @@ SRC ?=	ft_astr_astr.c \
 
 LIB_PATH_FLAG ?= $(addprefix -L,$(LINK_PATH))
 
-LIB_NAME = $(shell echo $(notdir $(LINK_PATH)) \
-	| grep -E -o "\b[a-zA-Z]+\b" | sed "s|lib||")
+LIB_NAME = $(shell echo $(notdir $(LINK_PATH)) | sed "s|lib||")
 
 LIB_NAME_FLAG ?= $(addprefix -l,$(LIB_NAME))
 
