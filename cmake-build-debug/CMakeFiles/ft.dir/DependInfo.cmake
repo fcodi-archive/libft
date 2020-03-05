@@ -1,0 +1,95 @@
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  "C"
+  )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_C
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_astr/src/ft_astrdel.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_astr/src/ft_astrdel.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_bool/src/ft_isalnum.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_bool/src/ft_isalnum.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_bool/src/ft_isalpha.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_bool/src/ft_isalpha.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_bool/src/ft_isascii.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_bool/src/ft_isascii.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_bool/src/ft_isdigit.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_bool/src/ft_isdigit.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_bool/src/ft_islower.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_bool/src/ft_islower.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_bool/src/ft_isprint.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_bool/src/ft_isprint.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_bool/src/ft_isspace.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_bool/src/ft_isspace.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_bool/src/ft_isupper.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_bool/src/ft_isupper.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_convert/src/ft_atoi.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_convert/src/ft_atoi.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_convert/src/ft_itoa.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_convert/src/ft_itoa.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_convert/src/ft_tolower.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_convert/src/ft_tolower.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_convert/src/ft_toupper.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_convert/src/ft_toupper.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_list/src/ft_lstadd.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_list/src/ft_lstadd.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_list/src/ft_lstdel.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_list/src/ft_lstdel.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_list/src/ft_lstdelone.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_list/src/ft_lstdelone.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_list/src/ft_lstiter.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_list/src/ft_lstiter.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_list/src/ft_lstmap.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_list/src/ft_lstmap.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_list/src/ft_lstnew.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_list/src/ft_lstnew.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_memfunc/src/ft_bzero.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_memfunc/src/ft_bzero.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_memfunc/src/ft_memalloc.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_memfunc/src/ft_memalloc.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_memfunc/src/ft_memccpy.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_memfunc/src/ft_memccpy.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_memfunc/src/ft_memchr.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_memfunc/src/ft_memchr.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_memfunc/src/ft_memcmp.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_memfunc/src/ft_memcmp.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_memfunc/src/ft_memcpy.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_memfunc/src/ft_memcpy.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_memfunc/src/ft_memdel.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_memfunc/src/ft_memdel.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_memfunc/src/ft_memmove.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_memfunc/src/ft_memmove.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_memfunc/src/ft_memset.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_memfunc/src/ft_memset.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_stdio/src/ft_putchar.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_stdio/src/ft_putchar.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_stdio/src/ft_putchar_fd.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_stdio/src/ft_putchar_fd.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_stdio/src/ft_putendl.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_stdio/src/ft_putendl.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_stdio/src/ft_putendl_fd.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_stdio/src/ft_putendl_fd.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_stdio/src/ft_putnbr.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_stdio/src/ft_putnbr.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_stdio/src/ft_putnbr_fd.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_stdio/src/ft_putnbr_fd.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_stdio/src/ft_putstr.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_stdio/src/ft_putstr.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_stdio/src/ft_putstr_fd.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_stdio/src/ft_putstr_fd.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strcat.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strcat.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strchr.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strchr.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strclr.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strclr.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strcmp.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strcmp.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strcpy.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strcpy.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strdel.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strdel.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strdup.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strdup.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strequ.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strequ.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_striter.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_striter.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_striteri.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_striteri.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strjoin.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strjoin.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strlcat.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strlcat.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strlen.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strlen.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strlenc.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strlenc.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strmap.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strmap.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strmapi.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strmapi.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strncat.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strncat.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strncmp.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strncmp.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strncpy.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strncpy.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strnequ.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strnequ.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strnew.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strnew.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strnlen.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strnlen.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strnstr.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strnstr.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strrchr.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strrchr.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strsplit.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strsplit.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strstr.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strstr.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strsub.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strsub.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/ft_string/src/ft_strtrim.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/ft_string/src/ft_strtrim.c.o"
+  "/Users/fcodi/Desktop/src/libftVanilla/src/ft_uintlen.c" "/Users/fcodi/Desktop/src/libftVanilla/cmake-build-debug/CMakeFiles/ft.dir/src/ft_uintlen.c.o"
+  )
+set(CMAKE_C_COMPILER_ID "AppleClang")
+
+# The include file search paths:
+set(CMAKE_C_TARGET_INCLUDE_PATH
+  "../."
+  "../include"
+  "../ft_bool/include"
+  "../ft_astr/include"
+  "../ft_convert/include"
+  "../ft_list/include"
+  "../ft_memfunc/include"
+  "../ft_size/include"
+  "../ft_stddef/include"
+  "../ft_stdio/include"
+  "../ft_string/include"
+  )
+
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")

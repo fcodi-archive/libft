@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../ft_bool/include/ft_bool.h
+
+../include/ft_stddef.h
+unistd.h
+-
+unistd.h
+-
+unistd.h
+-
+ft_bool.h
+-
+ft_bool.h
+-
+
+/Users/fcodi/Desktop/src/libftVanilla/src/ft_uintlen.c
+ft_stddef.h
+-
+

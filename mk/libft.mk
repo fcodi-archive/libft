@@ -1,0 +1,9 @@
+LIBFT_PATH := $(shell pwd)/libft
+
+INCLUDE_DIR ?= include
+
+INCLUDE_PATH += $(LIBFT_PATH)/$(INCLUDE_DIR)
+
+LINK_PATH = $(LIBFT_PATH)
+
+MAKE_LIBFT = @$(MAKE) -C $(LIBFT_PATH) $@
