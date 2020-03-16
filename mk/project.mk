@@ -2,12 +2,6 @@ PROJECT_PATH := $(shell pwd)
 
 INCLUDE_DIR ?= include
 
-#
-#OBJ_DIR ?= obj
-
-#
-#SRC_DIR ?= src
-
 INCLUDE_PATH += $(PROJECT_PATH)/$(INCLUDE_DIR)
 
 MAKE_PROJECT = @$(MAKE) -C libft $@ NAME=$(NAME) SRC="$(SRC)" \
