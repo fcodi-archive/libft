@@ -1,16 +1,18 @@
+override SHELL = /usr/bin/zsh
+
 HOMEBREWFIX_GIT = https://github.com/tolsadus/42homebrewfix.git
 
 BREW_INSTALLER = $(BREW_INSTALLER_PATH)/install.sh
 
-BREW_INSTALLER_DIR = brew_installer
+BREW_INSTALLER_DIR = .brew_installer
 
-BREW_INSTALLER_PATH = $(PROJECT_PATH)/$(BREW_INSTALLER_DIR)
+BREW_INSTALLER_PATH = $(HOME)/$(BREW_INSTALLER_DIR)
 
 BREW = $(BREW_BIN_PATH)/brew
 
 BREW_DIR = .brew
 
-BREW_PATH = ~/$(BREW_DIR)
+BREW_PATH = $(HOME)/$(BREW_DIR)
 
 BREW_BIN_DIR = bin
 

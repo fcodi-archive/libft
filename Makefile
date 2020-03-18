@@ -15,15 +15,15 @@
 .SUFFIXES:
 .SUFFIXES: .c .h .o .a
 
-VPATH ?= ../$(SRC_DIR) ../$(INCLUDE_DIR)
+VPATH ?= ../$(SRC_DIR) ../$(INCLUDE_DIR) $(VPATHS)
 
 .SECONDARY: $(OBJ)
 
 ifneq ($(CFLAGS),-Wall -Werror -Wextra)
 ifeq ($(suffix $(NAME)),.a)
-override ARFLAGS = rcs
+override ARFLAGS = rcsU
 endif
-override CFLAGS = -Wall -Werror -Wextra $(INCLUDE_FLAGS)
+override CFLAGS += -Wall -Werror -Wextra $(INCLUDE_FLAGS)
 override CC = gcc
 endif
 
@@ -174,7 +174,7 @@ ifeq ($(suffix $(notdir $(NAME))),.a)
 $(NAME): $(NAME)($(OBJ))
 else
 $(NAME):
-	$(CC) $(CFLAGS) $(LINK_FLAGS) -o $@ $(OBJ)
+	$(CC) $(OBJ) $(CFLAGS) $(LINK_FLAGS) -o $@
 endif
 
 clean:

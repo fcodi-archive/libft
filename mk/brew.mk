@@ -8,13 +8,17 @@ VPATH = $(BREW_BIN_PATH):$(BREW_SBIN_PATH):$(BREW_INCLUDE_PATH)\
 
 default: all
 
-install_brew:: $(BREW_INSTALLER_PATH)
-	sh $(BREW_INSTALLER)
+install_brew:: 
+.PHONY: $(BREW_INSTALLER)
+install_brew:: $(BREW_INSTALLER)
 
-$(BREW): $(BREW_INSTALLER_PATH)
+ifeq ($(wildcard $(BREW)),)
+$(BREW): $(BREW_INSTALLER)
 	sh $(BREW_INSTALLER)
+	$(RMDIR) $(BREW_INSTALLER_PATH)
+endif
 
-$(BREW_INSTALLER_PATH):
+$(BREW_INSTALLER):
 	git clone $(HOMEBREWFIX_GIT) $(BREW_INSTALLER_PATH)
 
 $(RUBY): $(BREW)

@@ -1,13 +1,19 @@
+override SHELL = /bin/zsh
+
 LIBFT_PATH := $(shell pwd)/libft
 
 LIBFT_MK_DIR := mk
 
 LIBFT_MK_PATH := $(LIBFT_PATH)/$(LIBFT_MK_DIR)
 
+LIBFT_MAKEFILE = $(LIBFT_PATH)/Makefile
+
 INCLUDE_DIR ?= include
 
 INCLUDE_PATH += $(LIBFT_PATH)/$(INCLUDE_DIR)
 
 LINK_PATH += $(LIBFT_PATH)
+
+LIBFT_SUFFIX = ft
 
 MAKE_LIBFT = @$(MAKE) -C $(LIBFT_PATH) $@

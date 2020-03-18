@@ -1,24 +1,19 @@
-include $(LIBFT_MK_PATH)/sdl-vars.mk
-
 include $(LIBFT_MK_PATH)/brew.mk
+
+include $(LIBFT_MK_PATH)/sdl-vars.mk
 
 .PHONY: default
 
-.INTERMEDIATE: $(SDL_SRC_PATH)
-
 default: all
 
-$(MAKE_SDL): $(SDL_BUILD_MAKEFILE)
-	$(MAKE) --makefile=$(SDL_BUILD_MAKEFILE) \
-	--directory=$(SDL_BUILD_PATH) all install
-	$(RMDIR) $(SDL_SRC_PATH) $(SDL_PREBUILD_PATH)
+ifeq ($(wildcard $(MAKE_SDL)),)
+$(MAKE_SDL): $(BREW) $(BREW_FIX_ZSH_BACKUP)
+	@if [ ! -f $(MAKE_SDL) ]; then $(BREW) install sdl2; fi
+	@echo $$SDL_FIX >> $(BREW_FIX_ZSH)
+else
+$(MAKE_SDL):
+	@echo SDL already prepared
+endif
 
-$(SDL_BUILD_MAKEFILE): $(SDL_BUILD_PATH)
-
-$(SDL_BUILD_PATH)::
-	@if [ ! -d $(SDL_BUILD_PATH) ]; then mkdir $(SDL_BUILD_PATH); fi;
-$(SDL_BUILD_PATH):: $(SDL_SRC_PATH)
-
-$(SDL_SRC_PATH): $(HG)
-	$(HG) clone $(LIBSDL_HG) $(SDL_SRC_PATH)
-	$(SDL_BUILD_CONFIGURE)
+$(BREW_FIX_ZSH_BACKUP):
+	cp $(BREW_FIX_ZSH) $(BREW_FIX_ZSH_BACKUP)
