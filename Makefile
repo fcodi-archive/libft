@@ -123,7 +123,15 @@ SRC ?=	ft_astr_astr.c \
         ft_csub.c \
         twin.c \
         tview.c \
-        tview_init.c
+        tview_init.c \
+		digits_after_dot.c \
+		digits_before_dot.c \
+		ft_atod_ex.c \
+		ft_atof_ex.c \
+		ft_atold_ex.c \
+		int_after_dot.c \
+		int_before_dot.c \
+		is_valid_float_string_ex.c
 
 LIB_PATH_FLAG ?= $(addprefix -L,$(LINK_PATH))
 

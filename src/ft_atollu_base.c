@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_atox_base.h"
+#include <ft_atox.h>
 
 unsigned long long			ft_atollu_base(const char *string,
 		const unsigned short base)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_atox_base.h"
+#include <ft_atox.h>
 
 long	ft_atol_base(const char *number, const unsigned short base)
 {

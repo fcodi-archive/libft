@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_atox_base.h"
+#include <ft_atox.h>
 
 int					ft_get_base_digit(const char n)
 {
