@@ -12,55 +12,39 @@
 
 #include "ft_tpointer_keeper.h"
 
-void		**convert_tpointer_keeper_to_massive(t_pointer_keeper *keeper)
+void 	**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
 {
-	void	**massive;
-	size_t	i;
+	char 			**matrix;
+	size_t 			i;
 
-	if (!keeper || !(massive = (void **)malloc(sizeof(void *)
-			* (keeper->attr.size + 1))))
+	calc_tpointer_count(keeper);
+	if (!keeper || !keeper->head
+		|| !(matrix = (char **)malloc(sizeof(char *)
+									  * (keeper->attr.pointer_count + 1))))
 		return (NULL);
-	i = -1;
-	massive[keeper->attr.size] = NULL;
+	i = 1;
+	matrix[keeper->attr.pointer_count] = NULL;
+	*matrix = keeper->head->ptr;
 	keeper->current = keeper->head;
-	while (++i < keeper->attr.size)
-	{
-		if (keeper->attr.sort_by_id)
-			massive[i] = keeper->find_id(keeper, i)->ptr;
-		else if (keeper->attr.sort_by_tag)
-			massive[i] = keeper->find_tag(keeper, keeper->attr.find_tag)->ptr;
-		else
-			massive[i] = keeper->current->ptr;
-		keeper->current = keeper->current->next;
-	}
-	return (massive);
+	while (keeper->current->next && (keeper->current = keeper->current->next))
+		matrix[i++] = keeper->current->ptr;
+	matrix[i] = keeper->current->ptr;
+	return ((void **)matrix);
 }
 
-_Bool 		add_tpointer_keeper_massive(t_pointer_keeper *keeper,
-		void **massive)
+_Bool 	add_matrix_to_tpointer_array(t_pointer_keeper *keeper, void **matrix)
 {
-	size_t		i;
+	size_t 		i;
 
-	if (!keeper || (keeper->attr.skip_null_ptr && (!massive || !*massive)))
+	if (!keeper || !matrix)
 		return (FALSE);
-	i = 0;
-	while (massive[i])
-	{
-		if (!keeper->add(keeper, massive[i]))
+	i = (size_t)-1;
+	while (matrix[++i])
+		if (!add_tpointer(keeper, matrix[i]))
 		{
-			destroy_tpointer_last_count(keeper, i);
+			if (keeper->attr.destroy_on_error)
+				destroy_tpointer_last_count(keeper, i + 1);
 			return (FALSE);
 		}
-		i++;
-	}
 	return (TRUE);
-}
-
-void		**convert_tpointer_keeper_to_massive_with_tag(
-		t_pointer_keeper *keeper, char *tag)
-{
-	if (!keeper || !tag)
-		return (NULL);
-	keeper->attr.find_tag = tag;
-	return (convert_tpointer_keeper_to_massive(keeper));
 }
