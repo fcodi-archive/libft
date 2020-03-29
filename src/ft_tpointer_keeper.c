@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_tpointer_keeper.h"
+#include <ft_tpointer_keeper.h>
 
 void				destroy_tpointer_all(t_pointer_keeper *keeper)
 {
@@ -66,5 +66,16 @@ t_pointer_keeper	*new_tpointer_keeper(void)
 	keeper->destroy_attr = destroy_tpointer_with_attr;
 	keeper->destroy_last_count = destroy_tpointer_last_count;
 	keeper->matrix_convert = add_matrix_to_tpointer_array;
+	return (keeper);
+}
+
+t_pointer_keeper	*new_tpointer_keeper_with_attr(t_pointer_keeper_attr *attr)
+{
+	t_pointer_keeper	*keeper;
+
+	if (!(keeper = new_tpointer_keeper()))
+		return (NULL);
+	if (attr)
+		copy_tpointer_keeper_attr(attr, &keeper->attr);
 	return (keeper);
 }

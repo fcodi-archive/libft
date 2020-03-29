@@ -131,7 +131,10 @@ SRC ?=	ft_astr_astr.c \
 		ft_atold_ex.c \
 		int_after_dot.c \
 		int_before_dot.c \
-		is_valid_float_string_ex.c
+		is_valid_float_string_ex.c \
+		ft_tpointer_keeper.c \
+        ft_tpointer_keeper_attr.c \
+        ft_tpointer_keeper_converter.c \
 
 LIB_PATH_FLAG ?= $(addprefix -L,$(LINK_PATH))
 
@@ -165,7 +168,7 @@ OBJ ?= $(SRC:.c=.o)
 
 RMDIR = $(RM)r
 
-ifeq ($(notdir $(shell pwd)),obj)
+ifeq ($(notdir $(shell pwd)),$(OBJ_DIR))
 all: $(NAME)
 else
 all: $(OBJ_PATH)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_tpointer_keeper.h"
+#include <ft_tpointer_keeper.h>
 
 void 	**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
 {
@@ -29,6 +29,8 @@ void 	**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
 	while (keeper->current->next && (keeper->current = keeper->current->next))
 		matrix[i++] = keeper->current->ptr;
 	matrix[i] = keeper->current->ptr;
+	if (keeper->attr.destroy_keeper_after_converting)
+		keeper->destroy_keeper(&keeper);
 	return ((void **)matrix);
 }
 

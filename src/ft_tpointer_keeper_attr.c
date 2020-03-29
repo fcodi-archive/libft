@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_tpointer_keeper.h"
+#include <ft_tpointer_keeper.h>
 
-void 				init_tpointer_keeper_attr(t_pointer_keeper_attr *attr)
+void 					init_tpointer_keeper_attr(t_pointer_keeper_attr *attr)
 {
 	attr->pointer_count = 0;
 	attr->destroy_ptr = FALSE;
@@ -20,9 +20,10 @@ void 				init_tpointer_keeper_attr(t_pointer_keeper_attr *attr)
 	attr->destroy_on_error = TRUE;
 	attr->ignore_pointer_count_when_destroy = TRUE;
 	attr->destroy_added_matrix = TRUE;
+	attr->destroy_keeper_after_converting = TRUE;
 }
 
-void 				calc_tpointer_count(t_pointer_keeper *keeper)
+void 					calc_tpointer_count(t_pointer_keeper *keeper)
 {
 	if (!keeper || !keeper->head)
 		return ;
@@ -41,4 +42,16 @@ t_pointer_keeper_attr	*get_default_tpointer_keeper_attr(void)
 		return (NULL);
 	init_tpointer_keeper_attr(attr);
 	return (attr);
+}
+
+void 					copy_tpointer_keeper_attr(
+		t_pointer_keeper_attr *source, t_pointer_keeper_attr *target)
+{
+	if (!source || !target)
+		return ;
+	target->destroy_added_matrix = source->destroy_added_matrix;
+	target->pointer_count = source->pointer_count;
+	target->destroy_on_error = source->destroy_on_error;
+	target->add_null_ptr = source->add_null_ptr;
+	target->destroy_ptr = source->destroy_ptr;
 }

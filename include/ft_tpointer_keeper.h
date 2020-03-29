@@ -31,6 +31,7 @@ typedef struct 						s_pointer_keeper_attr
 	_Bool 	add_null_ptr : 1;
 	_Bool 	destroy_ptr : 1;
 	_Bool 	destroy_on_error : 1;
+	_Bool 	destroy_keeper_after_converting : 1;
 	_Bool 	ignore_pointer_count_when_destroy : 1;
 	_Bool	destroy_added_matrix : 1;
 }									t_pointer_keeper_attr;
@@ -67,6 +68,7 @@ void 					calc_tpointer_count(t_pointer_keeper *keeper);
 void 					**convert_tpointer_keeper_to_matrix(
 		t_pointer_keeper *keeper);
 t_pointer_keeper		*new_tpointer_keeper(void);
+t_pointer_keeper	*new_tpointer_keeper_with_attr(t_pointer_keeper_attr *attr);
 t_pointer_keeper_attr	*get_default_tpointer_keeper_attr(void);
 void					destroy_tpointer_with_attr(t_pointer *pointer,
 		t_pointer_keeper_attr *attr);
@@ -75,6 +77,8 @@ void					destroy_tpointer_last_count(t_pointer_keeper *keeper,
 _Bool 					add_matrix_to_tpointer_array(
 		t_pointer_keeper *keeper,
 		void **matrix);
+void 					copy_tpointer_keeper_attr(
+		t_pointer_keeper_attr *source, t_pointer_keeper_attr *target);
 
 
 #endif

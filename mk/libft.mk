@@ -1,5 +1,3 @@
-override SHELL = /bin/zsh
-
 LIBFT_PATH := $(shell pwd)/libft
 
 LIBFT_MK_DIR := mk
