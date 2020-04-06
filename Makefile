@@ -1,186 +1,226 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/05 17:56:52 by fcodi             #+#    #+#              #
-#    Updated: 2020/03/05 17:10:56 by fcodi            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-.PHONY: all re clean fclean
-
-.SUFFIXES:
-.SUFFIXES: .c .h .o .a
-
-VPATH ?= ../$(SRC_DIR) ../$(INCLUDE_DIR)
-
-.SECONDARY: $(OBJ)
-
-ifneq ($(CFLAGS),-Wall -Werror -Wextra)
-ifeq ($(suffix $(NAME)),.a)
-override ARFLAGS = rcs
-endif
-override CFLAGS = -Wall -Werror -Wextra $(INCLUDE_FLAGS)
-override CC = gcc
-endif
+# -----------------------------------------------------------------------------
+#  General
+# -----------------------------------------------------------------------------
 
 NAME ?= libft.a
 
-PROJECT_PATH ?= $(shell pwd)
+WARNING_SUPPRESS_FLAGS = -Wall -Wextra -Werror
 
-SRC ?=	ft_astr_astr.c \
-		ft_atoi.c \
-		ft_astr_fill_c.c \
-		ft_atol_base.c \
-		ft_astr_put.c \
-		ft_astr_tolower.c \
-		ft_atoll_base.c \
-		ft_astr_len.c \
-		ft_atoi_base.c \
-		ft_atou_base.c \
-		ft_atollu_base.c \
-		ft_astr_new.c \
-		ft_astr_del.c \
-		ft_atolu_base.c \
-		ft_atox_utils.c \
-		ft_lstiter.c \
-		ft_strnlen.c \
-		ft_putnbr_fd.c \
-		ft_memccpy.c \
-		ft_putchar_fd.c \
-		ft_strrchr.c \
-		ft_lstadd.c \
-		ft_isalpha.c \
-		ft_strjoin.c \
-		ft_isdigit.c \
-		ft_strlenc.c \
-		ft_strdup.c \
-		ft_lstdelone.c \
-		ft_strncat.c \
-		get_next_line.c \
-		ft_lstdel.c \
-		ft_tolower.c \
-		ft_strsplit.c \
-		ft_strncpy.c \
-		ft_strcpy.c \
-		ft_putstr_fd.c \
-		ft_memset.c \
-		ft_strtrim.c \
-		ft_strchr.c \
-		ft_toupper.c \
-		ft_strnchri.c \
-		ft_putendl.c \
-		ft_uintlen.c \
-		ft_strdel.c \
-		ft_strcat.c \
-		ft_memchr.c \
-		ft_strlen.c \
-		ft_strmap.c \
-		ft_putendl_fd.c \
-		ft_putchar.c \
-		ft_ishex.c \
-		ft_striter.c \
-		ft_itoa.c \
-		ft_memcmp.c \
-		ft_strnequ.c \
-		ft_islower.c \
-		ft_isupper.c \
-		ft_strstr.c \
-		ft_strnew.c \
-		ft_nsym.c \
-		ft_putnbr.c \
-		ft_memdel.c \
-		ft_memcpy.c \
-		ft_strsub.c \
-		ft_isspace.c \
-		ft_isprint.c \
-		ft_lstnew.c \
-		ft_strclr.c \
-		ft_striteri.c \
-		ft_strlcat.c \
-		ft_strncmp.c \
-		ft_lstmap.c \
-		ft_strequ.c \
-		ft_memalloc.c \
-		ft_bzero.c \
-		ft_strcmp.c \
-		ft_putstr.c \
-		ft_strnstr.c \
-		ft_isalnum.c \
-		ft_memmove.c \
-		ft_strmapi.c \
-		ft_isascii.c \
-		ft_strndup.c \
-		ft_write_free.c \
-		ft_cpowl.c \
-        ft_cabsl.c \
-        ft_cdiv.c \
-        ft_cadd.c \
-        ft_cmul.c \
-        ft_csub.c \
-        twin.c \
-        tview.c \
-        tview_init.c
+override CC = gcc
 
-LIB_PATH_FLAG ?= $(addprefix -L,$(LINK_PATH))
+PROJECT_PATH ?= $(CURDIR)
 
-LIB_NAME = $(shell echo $(notdir $(LINK_PATH)) | sed "s|lib||")
+# -----------------------------------------------------------------------------
+#  Platform specific
+# -----------------------------------------------------------------------------
 
-LIB_NAME_FLAG ?= $(addprefix -l,$(LIB_NAME))
+OS ?= $(shell uname 2>/dev/null || echo Unknown)
 
-LINK_FLAGS = $(sort $(UNSORT_LINK_FLAGS))
+ifeq ($(OS),Unknown)
+$(error Unsupported OS)
+endif
 
-UNSORT_LINK_FLAGS := $(LINK_FLAGS) $(LIB_PATH_FLAG) $(LIB_NAME_FLAG)
-
-INCLUDE_FLAGS ?= $(addprefix -I,$(INCLUDE_PATH))
-
-MAKEFILE_PATH ?= $(PROJECT_PATH)/Makefile
-
-NAME_PATH ?= $(PROJECT_PATH)/$(NAME)
+# -----------------------------------------------------------------------------
+#  Include
+# -----------------------------------------------------------------------------
 
 INCLUDE_DIR ?= include
 
-INCLUDE_PATH ?= $(PROJECT_PATH)/$(INCLUDE_DIR)
+INCLUDE_PATH ?= $(INCLUDE_PATH_FIND)
 
-SRC_DIR ?= src
+INCLUDE_PATH_FIND != find $(PROJECT_PATH)/$(INCLUDE_DIR) -type d
 
-SRC_PATH ?= $(PROJECT_PATH)/$(SRC_PATH)
+INCLUDE_FLAGS ?= $(addprefix -I,$(INCLUDE_PATH))
 
-OBJ_DIR ?= obj
+INCLUDE_FILES ?= ft_string.h
 
-OBJ_PATH ?= $(PROJECT_PATH)/$(OBJ_DIR)
+# -----------------------------------------------------------------------------
+#  Source
+# -----------------------------------------------------------------------------
 
-OBJ ?= $(SRC:.c=.o)
+SOURCE_DIR ?= src
+
+SOURCE_PATH ?= $(SOURCE_PATH_FIND)
+
+SOURCE_PATH_FIND != find $(PROJECT_PATH)/$(SOURCE_DIR) -type d
+
+SOURCE_FILES ?= ft_uintlen.c \
+                ft_strjoin.c \
+                ft_strmap.c \
+                ft_strncpy.c \
+                ft_strcpy.c \
+                ft_strlenc.c \
+                ft_strchr.c \
+                ft_strnstr.c \
+                ft_strsub.c \
+                ft_strrchr.c \
+                ft_strncat.c \
+                ft_strcmp.c \
+                ft_strlcat.c \
+                ft_strnlen.c \
+                ft_strcat.c \
+                ft_strmapi.c \
+                ft_strnequ.c \
+                ft_strlen.c \
+                ft_strdup.c \
+                ft_strclr.c \
+                ft_strstr.c \
+                ft_strsplit.c \
+                ft_strdel.c \
+                ft_strnew.c \
+                ft_strequ.c \
+                ft_striter.c \
+                ft_striteri.c \
+                ft_strncmp.c \
+                ft_strtrim.c \
+                ft_isalpha.c \
+                ft_isdigit.c \
+                ft_isalnum.c \
+                ft_isspace.c \
+                ft_isprint.c \
+                ft_islower.c \
+                ft_isupper.c \
+                ft_isascii.c \
+                ft_lstiter.c \
+                ft_lstdel.c \
+                ft_lstadd.c \
+                ft_lstdelone.c \
+                ft_lstmap.c \
+                ft_lstnew.c \
+                ft_putstr_fd.c \
+                ft_putstr.c \
+                ft_putchar.c \
+                ft_putnbr_fd.c \
+                ft_putendl_fd.c \
+                ft_putnbr.c \
+                ft_putendl.c \
+                ft_putchar_fd.c \
+                ft_memccpy.c \
+                ft_memcpy.c \
+                ft_bzero.c \
+                ft_memset.c \
+                ft_memcmp.c \
+                ft_memchr.c \
+                ft_memdel.c \
+                ft_memalloc.c \
+                ft_memmove.c \
+                ft_tolower.c \
+                ft_toupper.c \
+                ft_itoa.c \
+                ft_atoi.c \
+                ft_astrdel.c
+
+# -----------------------------------------------------------------------------
+#  Object
+# -----------------------------------------------------------------------------
+
+OBJECT_DIR ?= obj
+
+OBJECT_PATH_EXIST ?= $(OBJECT_PATH)/.exist
+
+OBJECT_PATH ?= $(PROJECT_PATH)/$(OBJECT_DIR)
+
+OBJECT_FILES ?= $(SOURCE_FILES:.c=.o)
+
+# -----------------------------------------------------------------------------
+#  Library
+# -----------------------------------------------------------------------------
+
+ifneq ($(LIBRARY_FILES),)
+
+_LIBRARY_PATH = $(sort $(filter-out ./ ., $(dir $(LIBRARY_FILES)) \
+	$(LIBRARY_PATH)))
+
+_LIBRARY_FILES = $(notdir $(filter %.a %.so,$(LIBRARY_FILES)))
+ifeq ($(OS),Darwin)
+_LIBRARY_FILES += $(notdir $(filter %.dylib,$(LIBRARY_FILES)))
+endif
+
+LIBRARY_FLAGS = $(addprefix -l,$(sort $(basename $(_LIBRARY_FILES:lib%=%)))) \
+	$(addprefix -L,$(_LIBRARY_PATH))
+
+endif
+
+# -----------------------------------------------------------------------------
+#  GCC flags
+# -----------------------------------------------------------------------------
+
+ifeq ($(OS),Darwin)
+override ARFLAGS = rcs
+else ifeq ($(OS),Linux)
+override ARFLAGS = rcsU
+endif
+
+ifneq ($(CFLAGS),$(WARNING_SUPPRESS_FLAGS))
+override CFLAGS += $(WARNING_SUPPRESS_FLAGS)
+endif
+ifneq ($(CPPFLAGS),$(INCLUDE_FLAGS))
+override CPPFLAGS += $(sort $(INCLUDE_FLAGS))
+endif
+ifneq ($(LDFLAGS),$(LIBRARY_FLAGS))
+override LDFLAGS += $(sort $(LIBRARY_FLAGS))
+endif
+
+# -----------------------------------------------------------------------------
+#  Rules
+# -----------------------------------------------------------------------------
+
+all: $(NAME)
+
+ifeq ($(notdir $(CURDIR)),$(OBJECT_DIR))
+
+ifeq ($(suffix $(NAME)),.a)
+$(NAME): $(OBJECT_FILES) $(INCLUDE_FILES) $(NAME)($(OBJECT_FILES))
+else
+$(NAME): private BINFLAGS = $(sort $(CFLAGS) $(CPPFLAGS) $(LDFLAGS))
+$(NAME): $(OBJECT_FILES) $(INCLUDE_FILES)
+	$(CC) $^ $(BINFLAGS) -o $@
+endif
+
+else
+
+export
+$(NAME): $(SOURCE_FILES) $(INCLUDE_FILES) | $(OBJECT_PATH_EXIST)
+	$(MAKE) --makefile="$(CURDIR)/Makefile" \
+	--directory="$(OBJECT_PATH)" \
+	NAME="$(PROJECT_PATH)/$(NAME)"
+
+endif
+
+%.exist:
+	-mkdir $(@D)
+	-touch $@
+
+clean:
+	$(RMDIR) $(OBJECT_PATH)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all
+
+# -----------------------------------------------------------------------------
+#  Special rules and definitions
+# -----------------------------------------------------------------------------
+
+EMPTY :=
+
+SPACE :=
+SPACE +=
 
 RMDIR = $(RM)r
 
-ifeq ($(notdir $(shell pwd)),obj)
-all: $(NAME)
-else
-all: $(OBJ_PATH)
-	@$(MAKE) --directory=$(OBJ_PATH) --makefile=$(MAKEFILE_PATH) \
-	PROJECT_PATH=$(PROJECT_PATH) NAME=$(NAME_PATH) ARFLAGS=$(ARFLAGS) \
-	LINK_FLAGS="$(LINK_FLAGS)" LIB_NAME_LIST="$(LIB_NAME_LIST)"
+.PHONY: all re clean fclean libft
+
+.SECONDARY: $(OBJECT_FILES)
+
+.DEFAULT: all
+
+vpath %.c $(SOURCE_PATH)
+vpath %.h $(INCLUDE_PATH)
+vpath %.o $(OBJECT_PATH)
+vpath %.a $(_LIBRARY_PATH)
+vpath %.so $(_LIBRARY_PATH)
+ifeq ($(OS),Darwin)
+vpath %.dylib $(_LIBRARY_PATH)
 endif
-
-$(OBJ_PATH):
-	@if [ ! -d $(OBJ_PATH) ]; then mkdir $(OBJ_PATH); fi
-
-$(NAME): $(OBJ)
-ifeq ($(suffix $(notdir $(NAME))),.a)
-$(NAME): $(NAME)($(OBJ))
-else
-$(NAME):
-	$(CC) $(CFLAGS) $(LINK_FLAGS) -o $@ $(OBJ)
-endif
-
-clean:
-	$(RMDIR) $(OBJ_PATH)
-
-fclean: clean
-	$(RM) $(NAME_PATH)
-
-re: fclean all

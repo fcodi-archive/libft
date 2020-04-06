@@ -1,0 +1,7 @@
+.*
+.idea
+cmake-*
+.vscode
+obj
+*.a
+*.out

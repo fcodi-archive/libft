@@ -41,11 +41,7 @@
 #  include <ft_convert.h>
 # endif
 # if (NEED_VANILLA_ASTR || !NO_VANILLA_LIBFT)
-#  include <ft_astr/include/ft_astr.h>
-# endif
-# ifndef NO_VANILLA_LIBFT
-
-
+#  include <ft_astr.h>
 # endif
 
 #endif
