@@ -24,25 +24,34 @@ endif
 #  Include
 # -----------------------------------------------------------------------------
 
-INCLUDE_DIR ?= include
+INCLUDE_DIRECTORY ?= include
 
-INCLUDE_PATH ?= $(INCLUDE_PATH_FIND)
+INCLUDE_PATH ?= $(sort $(INCLUDE_PATH_FIND) \
+	$(filter-out ./ ., $(dir $(INCLUDE_FILES))))
 
-INCLUDE_PATH_FIND != find $(PROJECT_PATH)/$(INCLUDE_DIR) -type d
+INCLUDE_PATH_FIND != find $(PROJECT_PATH)/$(INCLUDE_DIRECTORY) -type d
 
 INCLUDE_FLAGS ?= $(addprefix -I,$(INCLUDE_PATH))
 
-INCLUDE_FILES ?= ft_string.h
+INCLUDE_FILES ?= ft_astr.h \
+                 ft_memfunc.h \
+                 ft_convert.h \
+                 libft.h \
+                 ft_bool.h \
+                 ft_stdio.h \
+                 ft_stddef.h \
+                 ft_list.h \
+                 ft_string.h
 
 # -----------------------------------------------------------------------------
 #  Source
 # -----------------------------------------------------------------------------
 
-SOURCE_DIR ?= src
+SOURCE_DIRECTORY ?= src
 
 SOURCE_PATH ?= $(SOURCE_PATH_FIND)
 
-SOURCE_PATH_FIND != find $(PROJECT_PATH)/$(SOURCE_DIR) -type d
+SOURCE_PATH_FIND != find $(PROJECT_PATH)/$(SOURCE_DIRECTORY) -type d
 
 SOURCE_FILES ?= ft_uintlen.c \
                 ft_strjoin.c \
@@ -114,11 +123,11 @@ SOURCE_FILES ?= ft_uintlen.c \
 #  Object
 # -----------------------------------------------------------------------------
 
-OBJECT_DIR ?= obj
+OBJECT_DIRECTORY ?= obj
 
 OBJECT_PATH_EXIST ?= $(OBJECT_PATH)/.exist
 
-OBJECT_PATH ?= $(PROJECT_PATH)/$(OBJECT_DIR)
+OBJECT_PATH ?= $(PROJECT_PATH)/$(OBJECT_DIRECTORY)
 
 OBJECT_FILES ?= $(SOURCE_FILES:.c=.o)
 
@@ -151,6 +160,36 @@ else ifeq ($(OS),Linux)
 override ARFLAGS = rcsU
 endif
 
+ifneq ($(INCLUDE),)
+override CPPFLAGS += $(sort $(addprefix -I, \
+	$(INCLUDE:$(COLON)=$(SPACE)))
+endif
+ifneq ($(CPATH),)
+override CPPFLAGS += $(sort $(addprefix -I, \
+	$(CPATH:$(COLON)=$(SPACE)))
+endif
+ifneq ($(LD_LIBRARY_PATH),)
+override LDFLAGS += $(sort $(addprefix -L, \
+	$(LD_LIBRARY_PATH:$(COLON)=$(SPACE))))
+endif
+ifneq ($(LIBRARY_PATH),)
+override LDFLAGS += $(sort $(addprefix -L, \
+	$(LIBRARY_PATH:$(COLON)=$(SPACE))))
+endif
+
+ifeq ($(OS),Darwin)
+
+ifneq ($(DYLD_LIBRARY_PATH),)
+override LDFLAGS = $(sort $(addprefix -L, \
+	$(DYLD_LIBRARY_PATH:$(COLON)=$(SPACE))))
+endif
+ifneq ($(DYLD_FALLBACK_LIBRARY_PATH),)
+override LDFLAGS = $(sort $(addprefix -L, \
+	$(DYLD_FALLBACK_LIBRARY_PATH:$(COLON)=$(SPACE))))
+endif
+
+endif
+
 ifneq ($(CFLAGS),$(WARNING_SUPPRESS_FLAGS))
 override CFLAGS += $(WARNING_SUPPRESS_FLAGS)
 endif
@@ -167,7 +206,7 @@ endif
 
 all: $(NAME)
 
-ifeq ($(notdir $(CURDIR)),$(OBJECT_DIR))
+ifeq ($(notdir $(CURDIR)),$(OBJECT_DIRECTORY))
 
 ifeq ($(suffix $(NAME)),.a)
 $(NAME): $(OBJECT_FILES) $(INCLUDE_FILES) $(NAME)($(OBJECT_FILES))
@@ -207,6 +246,8 @@ EMPTY :=
 
 SPACE :=
 SPACE +=
+
+COLON := :
 
 RMDIR = $(RM)r
 
