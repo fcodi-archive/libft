@@ -17,18 +17,26 @@ void 	**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
 	char 			**matrix;
 	size_t 			i;
 
-	calc_tpointer_count(keeper);
-	if (!keeper || !keeper->head
-		|| !(matrix = (char **)malloc(sizeof(char *)
-									  * (keeper->attr.pointer_count + 1))))
+	matrix = NULL;
+	if (!keeper)
 		return (NULL);
-	i = 1;
-	matrix[keeper->attr.pointer_count] = NULL;
-	*matrix = keeper->head->ptr;
-	keeper->current = keeper->head;
-	while (keeper->current->next && (keeper->current = keeper->current->next))
-		matrix[i++] = keeper->current->ptr;
-	matrix[i] = keeper->current->ptr;
+	if (!keeper->attr.destroy_ptr)
+	{
+		calc_tpointer_count(keeper);
+		if (!keeper->head || !(matrix = (char **)malloc(sizeof(char *)
+				* (keeper->attr.pointer_count + 1))))
+		{
+			keeper->attr.destroy_ptr = TRUE;
+			destroy_tpointer_keeper(&keeper);
+			return (NULL);
+		}
+		i = 1;
+		matrix[keeper->attr.pointer_count] = NULL;
+		*matrix = keeper->head->ptr;
+		keeper->current = keeper->head;
+		while (keeper->current->next && (keeper->current = keeper->current->next))
+			matrix[i++] = keeper->current->ptr;
+	}
 	if (keeper->attr.destroy_keeper_after_converting)
 		keeper->destroy_keeper(&keeper);
 	return ((void **)matrix);

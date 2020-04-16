@@ -13,7 +13,6 @@
 #ifndef FT_TPOINTER_KEEPER_H
 # define FT_TPOINTER_KEEPER_H
 # include "ft_bool.h"
-# include <libft.h>
 # include <stdlib.h>
 
 typedef struct s_pointer			t_pointer;
@@ -44,6 +43,10 @@ struct								s_pointer_keeper
 	t_pointer 				*head;
 	t_pointer 				*tail;
 	t_pointer 				*current;
+	t_pointer				*(*find_by_ptr)(t_pointer_keeper *keeper, void
+	*ptr);
+	void					(*destroy_by_ptr)(t_pointer_keeper *keeper, void
+	*ptr);
 	_Bool 					(*add)(t_pointer_keeper *keeper, void *ptr);
 	void 					(*destroy)(t_pointer *pointer);
 	void 					(*destroy_current)(t_pointer_keeper *keeper);
@@ -53,7 +56,7 @@ struct								s_pointer_keeper
 			size_t count);
 	void 					(*destroy_keeper)(t_pointer_keeper **keeper_ptr);
 	void 					(*destroy_all)(t_pointer_keeper *keeper);
-	void 					**(*convert_to_matrix)(t_pointer_keeper *keeper);
+	void 					**(*convert)(t_pointer_keeper *keeper);
 	_Bool 					(*matrix_convert)(t_pointer_keeper *keeper,
 			void **matrix);
 };
@@ -80,5 +83,7 @@ _Bool 					add_matrix_to_tpointer_array(
 void 					copy_tpointer_keeper_attr(
 		t_pointer_keeper_attr *source, t_pointer_keeper_attr *target);
 
+t_pointer	*get_tpointer_by_ptr(t_pointer_keeper *keeper, void *ptr);
+void	destroy_tpointer_by_ptr(t_pointer_keeper *keeper, void *ptr);
 
 #endif

@@ -62,10 +62,12 @@ t_pointer_keeper	*new_tpointer_keeper(void)
 	keeper->destroy_current = destroy_tpointer_current;
 	keeper->destroy_all = destroy_tpointer_all;
 	keeper->destroy_keeper = destroy_tpointer_keeper;
-	keeper->convert_to_matrix = convert_tpointer_keeper_to_matrix;
+	keeper->convert = convert_tpointer_keeper_to_matrix;
 	keeper->destroy_attr = destroy_tpointer_with_attr;
 	keeper->destroy_last_count = destroy_tpointer_last_count;
 	keeper->matrix_convert = add_matrix_to_tpointer_array;
+	keeper->find_by_ptr = get_tpointer_by_ptr;
+	keeper->destroy_by_ptr = destroy_tpointer_by_ptr;
 	return (keeper);
 }
 

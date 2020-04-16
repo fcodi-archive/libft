@@ -2,5 +2,5 @@
 
 float		ft_atof_ex(const char *number)
 {
-	return (ft_atold_ex(number));
+	return ((float)ft_atold_ex(number));
 }

@@ -1,12 +1,20 @@
 #include <ft_atox.h>
 
-long double	ft_atold_ex(const char *number)
+long double		ft_atold_ex(const char *string)
 {
-	const size_t		after = digits_after_dot(number) - 1;
-	const unsigned		power = powl(10 , after);
-	const long double	integer = int_before_dot(number);
-	long double			fraction;
+	char 			**parts;
+	char 			*raw;
+	size_t			size;
+	long double		result;
 
-	fraction = (long double)int_after_dot(number) / power;
-	return (integer + fraction);
+	if (!string || !(parts = ft_strsplit(string, '.'))
+	|| !(raw = join_strings_free(parts[0], parts[1])))
+		return (NAN);
+	size = ft_strlen(parts[1]);
+	result = (long double)ft_atoll_base(raw, 10);
+	if (size)
+		result /= powl(10.0L, size);
+	if (result > 0 && **parts == '-')
+		result += -1;
+	return (result);
 }
