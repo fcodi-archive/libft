@@ -1,6 +1,6 @@
 #include <ft_string_array.h>
 
-size_t 	get_string_array_size(const char **string_array)
+size_t 	get_string_array_size(char **string_array)
 {
 	size_t	size;
 
@@ -11,7 +11,7 @@ size_t 	get_string_array_size(const char **string_array)
 	return (size);
 }
 
-size_t	get_string_array_element_size(const char **string_array)
+size_t	get_string_array_element_size(char **string_array)
 {
 	size_t	size;
 	size_t	i;
