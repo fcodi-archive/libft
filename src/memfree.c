@@ -10,7 +10,7 @@ void	memfree(void *ptr)
 		collector = get_garbage_collector();
 	if (ptr == memfree && collector)
 	{
-		destroy_tpointer_keeper(&collector);
+		destroy_tpointer_keeper((t_pointer_keeper **)&collector);
 		collector = NULL;
 	}
 	if (collector)
