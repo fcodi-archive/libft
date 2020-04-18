@@ -8,6 +8,6 @@ void 	destroy_string_array(char **string_array)
 		return ;
 	i = 0;
 	while (string_array[i])
-		memfree(string_array[i++]);
-	memfree(string_array);
+		free(string_array[i++]);
+	free(string_array);
 }

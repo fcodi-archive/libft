@@ -8,18 +8,21 @@ long double		ft_atold_ex(const char *string)
 	size_t			size;
 	long double		result;
 
+	result = 0.0L;
 	parts = NULL;
+	raw = NULL;
 	if (!string || !*string || (dot && (!(parts = ft_strsplit(string, '.')))
-	|| (dot && !(raw = join_strings_free(parts[0], parts[1])))))
-	{
-		parts ? ft_astr_del(parts) : FALSE;
-		return (NAN);
-	}
-	size = dot ? ft_strlen(parts[1]) : 0;
+	|| (dot && !(raw = ft_strjoin(parts[0], parts[1])))))
+		result = NAN;
+	size = dot && parts && parts[1] ? ft_strlen(parts[1]) : 0;
+	dot && parts ? ft_astr_del(parts) : FALSE;
+	if (isnan(result))
+		return (result);
 	result = (long double)ft_atoll_base(dot ? raw : string, 10);
 	if (size)
 		result /= powl(10.0L, size);
 	if (result > 0 && *string == '-')
 		result *= -1;
+	raw ? ft_strdel(&raw) : FALSE;
 	return (result);
 }

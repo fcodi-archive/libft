@@ -6,7 +6,7 @@ char	*new_string(size_t size)
 
 	if (!size)
 		return (NULL);
-	if ((string = (char *)memalloc(++size)))
+	if ((string = (char *)malloc(++size)))
 		ft_bzero(string, size);
 	return (string);
 }

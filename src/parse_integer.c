@@ -46,7 +46,7 @@ char	**parse_integers(const char *string)
 					"+-1234567890") + ft_strlen(result);
 		else
 		{
-			memfree(result);
+			free(result);
 			destroy_tpointer_keeper(&keeper);
 			return (NULL);
 		}

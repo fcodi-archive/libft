@@ -16,9 +16,9 @@ char	*join_strings_free(char *string1, char *string2)
 {
 	char	*result;
 
-	if (!string1 || !string2 || !(result = memadd(ft_strjoin(string1, string2))))
+	if (!string1 || !string2 || !(result = ft_strjoin(string1, string2)))
 		return (NULL);
-	memfree(string1);
-	memfree(string2);
+	free(string1);
+	free(string2);
 	return (result);
 }

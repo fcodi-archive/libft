@@ -14,9 +14,9 @@ char	*cut_parse_float_ex(const char *string)
 	if (string[i] != '0')
 		while (string[i])
 		{
-			while (ft_strchr("1234567890", string[i]))
+			while (string[i] && ft_strchr("1234567890", string[i]))
 				i++;
-			if (string[i] == '.' ? (dot = !dot) : FALSE)
+			if (string[i] && string[i] == '.' ? (dot = !dot) : FALSE)
 				i++;
 			else
 				break ;
@@ -54,7 +54,7 @@ char	**parse_floats_ex(const char *string)
 					"+-1234567890") + ft_strlen(result);
 		else
 		{
-			memfree(result);
+			free(result);
 			destroy_tpointer_keeper(&keeper);
 			return (NULL);
 		}
