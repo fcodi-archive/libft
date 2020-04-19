@@ -48,6 +48,8 @@
 ** ************************************************************************** **
 */
 
+# ifndef T_COLOR
+#  define T_COLOR
 typedef union			u_color
 {
 	int					color;
@@ -59,6 +61,7 @@ typedef union			u_color
 		unsigned char	a: 8;
 	};
 }						t_color;
+# endif
 
 typedef struct			s_point
 {
