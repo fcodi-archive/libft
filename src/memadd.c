@@ -1,6 +1,6 @@
 #include <ft_memfunc.h>
 
-void	*memadd(void *ptr)
+void	*ft_madd(void *ptr)
 {
 	static t_garbage_collector	*collector = NULL;
 

@@ -1,6 +1,6 @@
 #include <ft_memfunc.h>
 
-void	memfree(void *ptr)
+void	ft_free(void *ptr)
 {
 	static t_garbage_collector		*collector = NULL;
 
@@ -8,7 +8,7 @@ void	memfree(void *ptr)
 		return ;
 	if (!collector)
 		collector = get_garbage_collector();
-	if (ptr == memfree && collector)
+	if (ptr == ft_free && collector)
 	{
 		destroy_tpointer_keeper((t_pointer_keeper **)&collector);
 		collector = NULL;

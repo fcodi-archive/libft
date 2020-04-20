@@ -2,5 +2,5 @@
 
 void	memfree_all(void)
 {
-	memfree((void *)memfree);
+	ft_free((void *) ft_free);
 }
