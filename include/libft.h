@@ -21,7 +21,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdint-gcc.h>
+# include <stdint.h>
 # include <ft_memfunc.h>
 # include <ft_bool.h>
 # include <ft_unicode.h>
@@ -50,9 +50,6 @@
 ** Extended functions and definitions
 ** ************************************************************************** **
 */
-
-typedef __int128 			int128_t;
-typedef unsigned __int128	uint128_t;
 
 size_t			ft_uintlen(unsigned int n);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);

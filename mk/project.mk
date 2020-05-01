@@ -1,21 +1,45 @@
-PROJECT_PATH := $(shell pwd)
+# **************************************************************************** #
+#	Project
+# **************************************************************************** #
 
-INCLUDE_DIR ?= include
+.PHONY: all re clean fclean
 
-INCLUDE_PATH += $(PROJECT_PATH)/$(INCLUDE_DIR)
+PROJECT_PATH := $(CURDIR)
 
-MAKE_PROJECT = @$(MAKE) -C libft $@ NAME="$(NAME)" SRC="$(SRC)" \
-	PROJECT_PATH=$(PROJECT_PATH) MAKEFILE_PATH=$(LIBFT_MAKEFILE) \
-	INCLUDE_PATH="$(INCLUDE_PATH)"
-ifneq ($(LINK_PATH),)
-	MAKE_PROJECT += LINK_PATH="$(LINK_PATH)"
+LIBFT_DIRECTORY ?= libft
+
+LIBFT_PATH = $(PROJECT_PATH)/$(LIBFT_DIRECTORY)
+
+LIBFT_MK_PATH = $(LIBFT_PATH)/mk
+
+include $(LIBFT_MK_PATH)/libft.mk
+
+MAKE_LIBFT = @$(MAKE) -C $(LIBFT_PATH) $@
+
+MAKE_PROJECT = @$(MAKE) $@ --makefile="$(LIBFT_MAKEFILE)" \
+	--directory="$(PROJECT_PATH)" NAME="$(NAME)" \
+	SOURCE_FILES="$(SOURCE_FILES)" INCLUDE_FILES="$(INCLUDE_FILES)"
+
+ifneq ($(LIBRARY_FILES),)
+MAKE_PROJECT += LIBRARY_FILES="$(LIBRARY_FILES)"
 endif
-ifneq ($(OBJ_DIR),)
-	MAKE_PROJECT += OBJ_DIR=$(OBJ_DIR)
+
+ifneq ($(LIBRARY_FLAGS),)
+MAKE_PROJECT += LIBRARY_FLAGS="$(LIBRARY_FLAGS)"
 endif
-ifneq ($(INCLUDE_DIR),)
-	MAKE_PROJECT += INCLUDE_DIR=$(INCLUDE_DIR)
+
+ifneq ($(LIBRARY_PATH),)
+MAKE_PROJECT += LIBRARY_PATH="$(LIBRARY_PATH)"
 endif
-ifneq ($(SRC_DIR),)
-	MAKE_PROJECT += SRC_DIR=$(SRC_DIR)
+
+ifneq ($(LDFLAGS),)
+MAKE_PROJECT += LDFLAGS="$(LDFLAGS)"
+endif
+
+ifneq ($(CFLAGS),)
+MAKE_PROJECT += CFLAGS="$(CFLAGS)"
+endif
+
+ifneq ($(CPPFLAGS),)
+MAKE_PROJECT += CPPFLAGS="$(CPPFLAGS)"
 endif

@@ -14,7 +14,6 @@
 
 void	*ft_memalloc(size_t size)
 {
-	size_t	i;
 	void	*result;
 
 	result = (void *)malloc(size * sizeof(*result));

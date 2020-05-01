@@ -8,9 +8,6 @@
 # include <math.h>
 # include <ft_string_array.h>
 
-typedef __int128 			int128_t;
-typedef unsigned __int128	uint128_t;
-
 unsigned long long	ft_atollu_base(const char *string,
 		const unsigned short base);
 long long			ft_atoll_base(const char *string,

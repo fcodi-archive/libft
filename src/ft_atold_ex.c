@@ -11,8 +11,8 @@ long double		ft_atold_ex(const char *string)
 	result = 0.0L;
 	parts = NULL;
 	raw = NULL;
-	if (!string || !*string || (dot && (!(parts = ft_strsplit(string, '.')))
-	|| (dot && !(raw = ft_strjoin(parts[0], parts[1])))))
+	if (!string || !*string || (dot && (!(parts = ft_strsplit(string, '.'))))
+	|| (dot && !(raw = ft_strjoin(parts[0], parts[1]))))
 		result = NAN;
 	size = dot && parts && parts[1] ? ft_strlen(parts[1]) : 0;
 	dot && parts ? ft_astr_del(parts) : FALSE;

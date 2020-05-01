@@ -8,7 +8,7 @@ void	*ft_malloc(const size_t size)
 	if (!size || !(ptr = malloc(size)))
 		return (NULL);
 	ft_bzero(ptr, size);
-	if (!collector && !(collector = get_garbage_collector())
+	if ((!collector && !(collector = get_garbage_collector()))
 		|| !collector->add(collector, ptr))
 	{
 		free(ptr);
