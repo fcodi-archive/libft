@@ -18,6 +18,12 @@ BREW_LIBRARY_DIRECTORY ?= lib
 
 BREW_LIBRARY_PATH ?= $(BREW_PATH)/$(BREW_LIBRARY_DIRECTORY)
 
+ifneq ($(CURDIR),$(LIBFT_PATH))
+ifneq ($(CURDIR),$(OBJECT_PATH))
+INCLUDE_PATH += $(BREW_INCLUDE_PATH)
+endif
+endif
+
 # **************************************************************************** #
 #	Brew install / uninstall
 # **************************************************************************** #
@@ -128,16 +134,18 @@ endif
 
 LIBSDL = $(BREW_LIBRARY_PATH)/libSDL.a
 
-$(LIBSDL): $(eval LIBRARY_FILES += $(LIBSDL))
+$(LIBSDL)::
+	$(eval LIBRARY_FILES += $(LIBSDL))
 ifeq ($(wildcard $(LIBSDL)),)
-$(LIBSDL): $(BREW)
+$(LIBSDL):: $(BREW)
 	$^ install SDL
 endif
 
 LIBSDL2 = $(BREW_LIBRARY_PATH)/libSDL2.a
 
-$(LIBSDL2):	$(eval LIBRARY_FILES += $(LIBSDL2))
+$(LIBSDL2)::
+	$(eval LIBRARY_FILES += $(LIBSDL2))
 ifeq ($(wildcard $(LIBSDL2)),)
-$(LIBSDL2): $(BREW)
+$(LIBSDL2):: $(BREW)
 	brew install SDL2
 endif
