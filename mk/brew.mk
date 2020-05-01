@@ -115,7 +115,14 @@ GLOBAL ?= $(BREW_BIN_PATH)/global
 
 GTAGS ?= $(BREW_BIN_PATH)/gtags
 
-GTAGS_FILES ?= $(addprefix $(PROJECT_PATH),GPATH GTAGS GRTAGS)
+GTAGS_FILES ?= $(addprefix $(PROJECT_PATH)/,GPATH GTAGS GRTAGS)
+
+.PHONY: clean_gtags
+
+clean: clean_gtags
+
+clean_gtags:
+	$(RM) $(GTAGS_FILES)
 
 $(GTAGS): $(GLOBAL)
 
