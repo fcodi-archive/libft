@@ -2,6 +2,8 @@
 #	General
 # **************************************************************************** #
 
+BASH := /bin/bash
+
 .PHONY: all re clean fclean
 
 PROJECT_PATH ?= $(CURDIR)
