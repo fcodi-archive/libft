@@ -81,9 +81,9 @@ all:
 
 vpath %.c $(SOURCE_PATH)
 vpath %.o $(OBJECT_PATH)
-vpath %.h $(INCLUDE_PATH)
-vpath %.a $(LIBRARY_FILES)
-vpath %.so $(LIBRARY_PATH)
+vpath %.h $(sort $(INCLUDE_PATH) $(_INCLUDE_PATH))
+vpath %.a $(sort $(LIBRARY_PATH) $(_LIBRARY_PATH))
+vpath %.so $(sort $(LIBRARY_PATH) $(_LIBRARY_PATH))
 ifeq ($(OS),Darwin)
-vpath %.dylib $(LIBRARY_PATH)
+vpath %.dylib $(sort $(LIBRARY_PATH) $(_LIBRARY_PATH))
 endif

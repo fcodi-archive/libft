@@ -4,7 +4,17 @@
 
 BREW_DIRECTORY := .brew
 
+LINUXBREW_USER_DIRECTORY := linuxbrew
+
+LINUXBREW_DIRECTORY := .linuxbrew
+
+LINUXBREW_PATH := /home/$(LINUXBREW_USER_DIRECTORY)/$(LINUXBREW_DIRECTORY)
+
+ifeq ($(wildacard $(LINUXBREW_PATH)/bin/brew),)
 BREW_PATH := $(HOME)/$(BREW_DIRECTORY)
+else
+BREW_PATH := $(LINUXBREW_PATH)
+endif
 
 BREW_BIN_DIRECTORY := bin
 
@@ -56,13 +66,13 @@ BREW_INCLUDE_FT := $(foreach FILE,$(notdir $(LIBFT_INCLUDE_FILES)), \
 	$(addprefix $(BREW_INCLUDE_PATH),$(FILE)))
 
 BREW_LD_LIBRARY_PATH_EXPORT_STRING := \
-	"export LD_LIBRARY_PATH=$(BREW_LIB_PATH):$$LD_LIBRARY_PATH"
+	"export LD_LIBRARY_PATH=$(BREW_LIBRARY_PATH):$$LD_LIBRARY_PATH"
 
 BREW_INCLUDE_EXPORT_STRING := \
 	"export INCLUDE=$(BREW_INCLUDE_PATH):$$INCLUDE"
 
 BREW_CPATH_EXPORT_STRING := \
-	"export CPATH=$(BREW_INCLUDE_PATH):$$CPATH)"
+	"export CPATH=$(BREW_INCLUDE_PATH):$$CPATH"
 
 BREW_BREWFIX_SOURCE_STRING := \
 	"source $(BREW_FIX)"
@@ -79,15 +89,15 @@ all:
 install: install_brew $(BREW_LIBFT)
 install_brew: $(BREW)
 ifeq ($(wildcard $(BREW)),)
-ifneq ($(wildacard $(BASHRC)),)
-$(BREW): $(BASHRC_BACKUP)
+ifneq ($(wildcard $(BASHRC)),)
+$(BREW):: $(BASHRC_BACKUP)
 endif
 ifneq ($(wildcard $(ZSHRC)),)
-$(BREW): $(ZSHRC_BACKUP)
+$(BREW):: $(ZSHRC_BACKUP)
 endif
-$(BREW): $(BREW_INSTALLER)
+$(BREW):: $(BREW_INSTALLER)
 	$(BASH) $<
-$(BREW): $(BREW_ENV)
+$(BREW):: $(BREW_ENV)
 endif
 ifeq ($(wildcard $(BREW_INSTALLER)),)
 $(BREW_INSTALLER):
@@ -101,7 +111,7 @@ $(BREW_INCLUDE_FT):
 
 uninstall: uninstall_brew uninstall_libft
 uninstall_brew::
-	$(RM) $(BREW_FIX) $(ZSHRC) $(BASHRC)
+	$(RM) $(BREW_FIX) $(ZSHRC) $(BASHRC) $(BREW_ENV)
 	$(RMDIR) $(BREW_PATH) $(dir $(BREW_INSTALLER))
 ifneq ($(wildcard $(ZSHRC_BACKUP)),)
 uninstall_brew::
@@ -109,17 +119,20 @@ uninstall_brew::
 endif
 ifneq ($(wildcard $(BASHRC_BACKUP)),)
 uninstall_brew::
-	mv $(BASHRC_BACKUP) $(BASHRC) $(BREW_ENV)
+	mv $(BASHRC_BACKUP) $(BASHRC)
+else
+uninstall_brew::
+	cp /etc/skel/.bashrc $(HOME)/.bashrc
 endif
 
 uninstall_libft:
 	$(RM) $(BREW_LIB_FT) $(BREW_INCLUDE_FT)
 
 $(BREW_ENV):
-	@echo $(BREW_LD_LIBRARY_PATH_EXPORT_STRING) >> $(BREWFIX)
-	@echo $(BREW_INCLUDE_EXPORT_STRING) >> $(BREWFIX)
-	@echo $(BREW_CPATH_EXPORT_STRING) >> $(BREWFIX)
-	@echo $(BREWFIX_SOURCE_STRING) >> $(BASHRC)
+	@echo $(BREW_LD_LIBRARY_PATH_EXPORT_STRING) >> $(BREW_FIX)
+	@echo $(BREW_INCLUDE_EXPORT_STRING) >> $(BREW_FIX)
+	@echo $(BREW_CPATH_EXPORT_STRING) >> $(BREW_FIX)
+	@echo $(BREW_BREWFIX_SOURCE_STRING) >> $(BASHRC)
 	@touch $@
 	$(info Please open a new terminal to apply modifications)
 
@@ -140,14 +153,17 @@ GTAGS_FILES ?= $(addprefix $(PROJECT_PATH)/,GPATH GTAGS GRTAGS)
 
 clean: clean_gtags
 
-clean_gtags:
+clean_gtags::
+ifneq ($(wildcard $(GTAGS_FILES)),)
+clean_gtags::
 	$(RM) $(GTAGS_FILES)
+endif
 
 $(GTAGS): $(GLOBAL)
 
 ifeq ($(wildcard $(GLOBAL)),)
 $(GLOBAL): $(BREW)
-	$(shell $(BREW) install global)
+	$(BASH) $(BREW) install global
 else
 $(GLOBAL): $(GTAGS_FILES)
 $(GTAGS_FILES):
@@ -161,17 +177,29 @@ endif
 LIBSDL = $(BREW_LIBRARY_PATH)/libSDL.a
 
 $(LIBSDL)::
+ifeq ($(shell ldconfig -p | grep $(notdir $(LIBSDL))),)
+$(LIBSDL)::
 	$(eval LIBRARY_FILES += $(LIBSDL))
 ifeq ($(wildcard $(LIBSDL)),)
 $(LIBSDL):: $(BREW)
-	$(shell $(BREW) install SDL )
+	$(BASH) $(BREW) install SDL
+endif
+else
+$(LIBSDL)::
+	$(eval override LDFLAGS += -lSDL)
 endif
 
 LIBSDL2 = $(BREW_LIBRARY_PATH)/libSDL2.a
 
 $(LIBSDL2)::
+ifeq ($(shell ldconfig -p | grep $(notdir $(LIBSDL2))),)
+$(LIBSDL2)::
 	$(eval LIBRARY_FILES += $(LIBSDL2))
 ifeq ($(wildcard $(LIBSDL2)),)
 $(LIBSDL2):: $(BREW)
-	$(shell $(BREW) install SDL2 )
+	$(BASH) $(BREW) install SDL2
+endif
+else
+$(LIBSDL2)::
+	$(eval override LDFLAGS += -lSDL2)
 endif

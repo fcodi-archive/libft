@@ -14,7 +14,7 @@ LIBFT_MK_PATH = $(LIBFT_PATH)/mk
 
 include $(LIBFT_MK_PATH)/libft.mk
 
-MAKE_LIBFT = @$(MAKE) -C $(LIBFT_PATH) $@
+MAKE_LIBFT = @$(MAKE) -C $(LIBFT_PATH) $(MAKECMDGOALS)
 
 MAKE_PROJECT = @$(MAKE) $@ --makefile="$(LIBFT_MAKEFILE)" \
 	--directory="$(PROJECT_PATH)" NAME="$(NAME)" \

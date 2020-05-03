@@ -10,7 +10,15 @@
 #                                                                              #
 # **************************************************************************** #
 
+$(info CURDIR = $(CURDIR))
+
+ifeq ($(notdir $(CURDIR)),libft)
+NAME := libft.a
+else
 NAME ?= libft.a
+endif
+
+$(info NAME = $(NAME))
 
 SOURCE_FILES ?= convert_string_array.c \
 	get_word_end_position.c \
@@ -30,7 +38,6 @@ SOURCE_FILES ?= convert_string_array.c \
 	ft_cabsl.c \
 	parse_integer.c \
 	ft_memcmp.c \
-	tview.c \
 	ft_putchar_fd.c \
 	ft_calloc.c \
 	ft_cpowl.c \
@@ -108,7 +115,6 @@ SOURCE_FILES ?= convert_string_array.c \
 	get_next_line.c \
 	ft_realloc.c \
 	memadd.c \
-	tview_init.c \
 	ft_lstmap.c \
 	ft_cdiv.c \
 	ft_exit.c \
@@ -136,7 +142,6 @@ SOURCE_FILES ?= convert_string_array.c \
 	ft_strcmp.c \
 	ft_atold_ex.c \
 	ft_putstr_fd.c \
-	twin.c \
 	ft_isascii.c \
 	ft_isupper.c \
 	ft_toupper.c
@@ -144,12 +149,10 @@ SOURCE_FILES ?= convert_string_array.c \
 LIBFT_INCLUDE_FILES ?= ft_atox.h \
 	ft_string.h \
 	ft_garbage_collector.h \
-	ft_mlx.h \
 	type_punning.h \
 	ft_string_array.h \
 	libft.h \
 	ft_complex.h \
-	ft_mlx_events.h \
 	ft_bool.h \
 	ft_unicode.h \
 	ft_tpointer_keeper.h \

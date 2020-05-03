@@ -29,7 +29,6 @@
 # include <ft_atox.h>
 # include <ft_tpointer_keeper.h>
 # include <ft_garbage_collector.h>
-# include <ft_mlx.h>
 # include <get_next_line.h>
 # include <ft_string.h>
 # include <ft_string_array.h>
