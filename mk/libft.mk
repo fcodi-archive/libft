@@ -2,8 +2,6 @@
 #	General
 # **************************************************************************** #
 
-BASH := /bin/bash
-
 .PHONY: all re clean fclean
 
 PROJECT_PATH ?= $(CURDIR)
@@ -12,8 +10,9 @@ RMDIR := $(RM)r
 
 EMPTY :=
 
-SPACE :=
-SPACE +=
+SPACE := $(EMPTY) $(EMPTY)
+
+COMMA :=,
 
 # **************************************************************************** #
 #	Libft
@@ -25,6 +24,12 @@ ifeq ($(notdir $(CURDIR)),$(LIBFT_DIRECTORY))
 LIBFT_PATH ?= $(CURDIR)
 else
 LIBFT_PATH ?= $(PROJECT_PATH)/$(LIBFT_DIRECTORY)
+
+ifneq ($(CURDIR),$(OBJECT_PATH))
+LIBRARY_FILES += $(LIBFT_PATH)/libft.a
+override LDFLAGS += -lm
+endif
+
 endif
 
 LIBFT_MAKEFILE ?= $(LIBFT_PATH)/Makefile
@@ -34,12 +39,6 @@ LIBFT_INCLUDE_DIRECTORY ?= include
 LIBFT_INCLUDE_PATH_ROOT ?= $(LIBFT_PATH)/$(LIBFT_INCLUDE_DIRECTORY)
 
 LIBFT_INCLUDE_PATH ?= $(shell find $(LIBFT_INCLUDE_PATH_ROOT) -type d)
-
-ifneq ($(CURDIR),$(OBJECT_PATH))
-INCLUDE_PATH += $(LIBFT_INCLUDE_PATH)
-LIBRARY_FILES += $(LIBFT_PATH)/libft.a
-override LDFLAGS += -lm
-endif
 
 # **************************************************************************** #
 #	Libft MK
@@ -59,21 +58,24 @@ OS_MK ?= $(LIBFT_MK_PATH)/os.mk
 
 PROJECT_MK ?= $(LIBFT_MK_PATH)/project.mk
 
+INSTALL_MK ?= $(LIBFT_MK_PATH)/install.mk
+
 # **************************************************************************** #
 #	Libft special rules and definitions
 # **************************************************************************** #
 
 ifneq ($(CURDIR),$(OBJECT_PATH))
-include $(VAR_MK)
 include $(OS_MK)
+include $(VAR_MK)
 include $(FLAGS_MK)
-include $(BREW_MK)
 endif
+#include $(INSTALL_MK)
+#include $(BREW_MK)
 
 all:
 
 %.exist:
-	-mkdir $(@D)
+	-mkdir -p $(@D)
 	-touch $@
 
 %.backup:

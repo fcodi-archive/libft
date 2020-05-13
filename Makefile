@@ -10,15 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-$(info CURDIR = $(CURDIR))
+LIBFT = libft.a
 
 ifeq ($(notdir $(CURDIR)),libft)
-NAME := libft.a
+NAME := $(LIBFT)
 else
-NAME ?= libft.a
+NAME ?= $(LIBFT)
 endif
-
-$(info NAME = $(NAME))
 
 SOURCE_FILES ?= convert_string_array.c \
 	get_word_end_position.c \
@@ -146,7 +144,7 @@ SOURCE_FILES ?= convert_string_array.c \
 	ft_isupper.c \
 	ft_toupper.c
 
-LIBFT_INCLUDE_FILES ?= ft_atox.h \
+LIBFT_INCLUDE_FILES = ft_atox.h \
 	ft_string.h \
 	ft_garbage_collector.h \
 	type_punning.h \
@@ -186,19 +184,19 @@ all: $(NAME)
 ifeq ($(CURDIR),$(OBJECT_PATH))
 $(NAME): $(INCLUDE_FILES) $(OBJECT_FILES)
 ifeq ($(suffix $(NAME)),.a)
-$(NAME): $(NAME)($(INCLUDE_FILES) $(OBJECT_FILES))
+$(NAME): $(NAME)($(OBJECT_FILES))
 else
-$(NAME): $(INCLUDE_FILES) $(OBJECT_FILES)
-	$(CC) $^ $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
+$(NAME): $(OBJECT_FILES)
+	$(CC) $(OBJECT_FILES) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
 endif
 else
-%.o: %.c
-	$(eval )
 export
+%.o: %.c;
 $(NAME): $(OBJECT_PATH_EXIST) $(INCLUDE_FILES) $(OBJECT_FILES)
-	@$(MAKE) --directory="$(OBJECT_PATH)" --makefile="$(LIBFT_MAKEFILE)" \
+	+@$(MAKE) --directory="$(OBJECT_PATH)" --makefile="$(LIBFT_MAKEFILE)" \
+	--no-print-directory \
 	NAME="$(PROJECT_PATH)/$(NAME)" PROJECT_PATH="$(PROJECT_PATH)" \
-	CFLAGS="$(sort $(CFLAGS))" LDFLAGS="$(sort $(LDFLAGS))" \
+	CFLAGS="$(sort $(CFLAGS))" LDFLAGS="$(LDFLAGS)" \
 	CPPFLAGS="$(sort $(CPPFLAGS))" LIBRARY_PATH="$(sort $(_LIBRARY_PATH))" \
 	SOURCE_PATH="$(sort $(_SOURCE_PATH))" OBJECT_PATH="$(OBJECT_PATH)" \
 	INCLUDE_PATH="$(sort $(_INCLUDE_PATH))" \
@@ -206,9 +204,9 @@ $(NAME): $(OBJECT_PATH_EXIST) $(INCLUDE_FILES) $(OBJECT_FILES)
 endif
 
 clean:
-	$(RMDIR) $(OBJECT_PATH)
+	$(RMDIR) $(OBJECT_PATH) $(REMOVE_PATH)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(REMOVE_FILE)
 
 re: fclean all
