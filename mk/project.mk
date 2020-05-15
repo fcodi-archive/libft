@@ -2,6 +2,8 @@
 #	Predefined libft variables and includes
 # **************************************************************************** #
 
+.DEFAULT_GOAL := all
+
 PROJECT_PATH := $(CURDIR)
 
 LIBFT_DIRECTORY ?= libft
@@ -14,7 +16,7 @@ LIBFT_MK_PATH = $(LIBFT_PATH)/mk
 
 LIBFT_MAKEFILE ?= $(LIBFT_PATH)/Makefile
 
-MAKE_LIBFT = +@$(MAKE) --no-print-directory -C $(LIBFT_PATH) $(MAKECMDGOALS)
+MAKE_LIBFT = +@$(MAKE) --no-print-directory -C $(LIBFT_PATH)
 
 .PHONY: all re clean fclean $(LIBFT)
 
@@ -23,6 +25,8 @@ include $(LIBFT_MK_PATH)/libft.mk
 # **************************************************************************** #
 #	Set MAKE_PROJECT command
 # **************************************************************************** #
+
+MAKE_RE = $(MAKE) --no-print-directory -f Makefile NAME=$(NAME)
 
 MAKE_PROJECT = +@$(MAKE) --makefile="$(LIBFT_MAKEFILE)" \
 	--directory="$(PROJECT_PATH)" --no-print-directory \
@@ -63,12 +67,3 @@ endif
 ifneq ($(REMOVE_PATH),)
 MAKE_PROJECT += REMOVE_PATH="$(REMOVE_PATH)"
 endif
-
-# **************************************************************************** #
-#	Rule that always check libft
-# **************************************************************************** #
-
-all: $(LIBFT)
-
-$(LIBFT):
-	$(MAKE_LIBFT)

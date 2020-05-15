@@ -4,6 +4,10 @@
 
 .PHONY: all re clean fclean
 
+.DEFAULT_GOAL := all
+
+.DEFAULT: all
+
 PROJECT_PATH ?= $(CURDIR)
 
 RMDIR := $(RM)r
@@ -50,7 +54,7 @@ LIBFT_MK ?= $(LIBFT_MK_PATH)/libft.mk
 
 VAR_MK ?= $(LIBFT_MK_PATH)/var.mk
 
-BREW_MK ?= $(LIBFT_MK_PATH)/brew.mk
+#BREW_MK ?= $(LIBFT_MK_PATH)/brew.mk
 
 FLAGS_MK ?= $(LIBFT_MK_PATH)/flags.mk
 
@@ -58,7 +62,15 @@ OS_MK ?= $(LIBFT_MK_PATH)/os.mk
 
 PROJECT_MK ?= $(LIBFT_MK_PATH)/project.mk
 
-INSTALL_MK ?= $(LIBFT_MK_PATH)/install.mk
+#INSTALL_MK ?= $(LIBFT_MK_PATH)/install.mk
+
+SDL2_MK ?= $(LIBFT_MK_PATH)/sdl2.mk
+
+LOG_MK ?= $(LIBFT_MK_PATH)/log.mk
+
+BIN_MK ?= $(LIBFT_MK_PATH)/bin.mk
+
+LIB_MK ?= $(LIBFT_MK_PATH)/lib.mk
 
 # **************************************************************************** #
 #	Libft special rules and definitions
@@ -69,10 +81,6 @@ include $(OS_MK)
 include $(VAR_MK)
 include $(FLAGS_MK)
 endif
-#include $(INSTALL_MK)
-#include $(BREW_MK)
-
-all:
 
 %.exist:
 	-mkdir -p $(@D)
