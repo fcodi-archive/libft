@@ -23,7 +23,6 @@ SOURCE_FILES ?= convert_string_array.c \
 	ft_strcpy.c \
 	ft_lstnew.c \
 	ft_memmove.c \
-	ft_wchar_to_string.c \
 	ft_strlen.c \
 	ft_strjoin.c \
 	get_word_start_position.c \
@@ -147,15 +146,14 @@ SOURCE_FILES ?= convert_string_array.c \
 LIBFT_INCLUDE_FILES = ft_atox.h \
 	ft_string.h \
 	ft_garbage_collector.h \
-	type_punning.h \
 	ft_string_array.h \
 	libft.h \
 	ft_complex.h \
 	ft_bool.h \
-	ft_unicode.h \
 	ft_tpointer_keeper.h \
 	ft_memfunc.h \
-	get_next_line.h
+	get_next_line.h \
+	ft_tpointer_keeper_structs.h \
 
 INCLUDE_FILES ?= $(LIBFT_INCLUDE_FILES)
 

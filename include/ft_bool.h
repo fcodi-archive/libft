@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bool.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbear <bbear@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/16 10:02:08 by bbear             #+#    #+#             */
+/*   Updated: 2020/05/16 10:02:09 by bbear            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_BOOL_H
 # define FT_BOOL_H
 
@@ -11,8 +23,8 @@
 
 void			set_bit(uint8_t *word, unsigned bit_index);
 void			unset_bit(uint8_t *word, unsigned bit_index);
-_Bool 			validate_mask(const char *mask);
-_Bool 			set_mask(uint8_t *word, const char *mask);
+_Bool			validate_mask(const char *mask);
+_Bool			set_mask(uint8_t *word, const char *mask);
 char			*get_mask(const uint8_t word);
 int8_t			byte_shift(void);
 uint8_t			byte_start(void);

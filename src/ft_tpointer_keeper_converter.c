@@ -12,7 +12,14 @@
 
 #include <ft_tpointer_keeper.h>
 
-void	**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
+static void	**converter_destroy(t_pointer_keeper *keeper)
+{
+	keeper->attr.destroy_ptr = TRUE;
+	destroy_tpointer_keeper(&keeper);
+	return (NULL);
+}
+
+void		**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
 {
 	char		**matrix;
 	size_t		i;
@@ -25,16 +32,13 @@ void	**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
 		calc_tpointer_count(keeper);
 		if (!keeper->head || !(matrix = (char **)malloc(sizeof(char *)
 				* (keeper->attr.pointer_count + 1))))
-		{
-			keeper->attr.destroy_ptr = TRUE;
-			destroy_tpointer_keeper(&keeper);
-			return (NULL);
-		}
+			return (converter_destroy(keeper));
 		i = 1;
 		matrix[keeper->attr.pointer_count] = NULL;
 		*matrix = keeper->head->ptr;
 		keeper->current = keeper->head;
-		while (keeper->current->next && (keeper->current = keeper->current->next))
+		while (keeper->current->next &&
+				(keeper->current = keeper->current->next))
 			matrix[i++] = keeper->current->ptr;
 	}
 	if (keeper->attr.destroy_keeper_after_converting)
@@ -42,7 +46,7 @@ void	**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
 	return ((void **)matrix);
 }
 
-_Bool	add_matrix_to_tpointer_array(t_pointer_keeper *keeper, void **matrix)
+_Bool		add_matrix_to_tpointer_array(t_pointer_keeper *keeper, void **matrix)
 {
 	size_t		i;
 

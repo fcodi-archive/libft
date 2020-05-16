@@ -24,7 +24,6 @@
 # include <stdint.h>
 # include <ft_memfunc.h>
 # include <ft_bool.h>
-# include <ft_unicode.h>
 # include <ft_complex.h>
 # include <ft_atox.h>
 # include <ft_tpointer_keeper.h>
@@ -64,7 +63,7 @@ size_t			ft_astr_len(char **astr);
 _Bool			ft_astr_astr(char **astr1, char **astr2);
 _Bool			ft_astr_tolower(char **astr);
 _Bool			ft_ishex(const char c);
-char 			*ft_strndup(const char *string, size_t n);
+char			*ft_strndup(const char *string, size_t n);
 size_t			ft_strput(const char *string);
 
 /*
