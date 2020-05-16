@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atold_ex.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/04 12:59:23 by fcodi             #+#    #+#             */
+/*   Updated: 2020/02/04 18:16:31 by fcodi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_atox.h>
 
 long double		ft_atold_ex(const char *string)
 {
-	const char 		*dot = ft_strchr(string, '.');
-	char 			**parts;
-	char 			*raw;
+	const char		*dot = ft_strchr(string, '.');
+	char			**parts;
+	char			*raw;
 	size_t			size;
 	long double		result;
 

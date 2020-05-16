@@ -6,16 +6,11 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:01:54 by fcodi             #+#    #+#             */
-/*   Updated: 2020/02/04 13:02:06 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/05/15 07:13:42 by owl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_bool.h"
-
-/**
- *
- * @return
- */
 
 int8_t		byte_shift(void)
 {
@@ -26,11 +21,6 @@ int8_t		byte_shift(void)
 	else
 		return (0);
 }
-
-/**
- *
- * @return
- */
 
 uint8_t		byte_start(void)
 {

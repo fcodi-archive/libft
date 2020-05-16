@@ -12,24 +12,12 @@
 
 #include "ft_bool.h"
 
-/**
-**
-** @param word
-** @param bit_index
-**/
-
 void		set_bit(uint8_t *word, unsigned bit_index)
 {
 	if (bit_index >= 8u)
 		return ;
 	*word |= (1u << bit_index);
 }
-
-/**
-**
-** @param word
-** @param bit_index
-**/
 
 void		unset_bit(uint8_t *word, unsigned bit_index)
 {

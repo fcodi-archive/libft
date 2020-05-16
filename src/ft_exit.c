@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/04 12:59:23 by fcodi             #+#    #+#             */
+/*   Updated: 2020/02/04 18:16:31 by fcodi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_memfunc.h>
 
-static const char		*get_return_code_message(const t_return_code code)
+static const char	*get_return_code_message(const t_return_code code)
 {
 	if (code == rc_ok)
 		return (RC_OK);
@@ -15,7 +27,7 @@ static const char		*get_return_code_message(const t_return_code code)
 	return (NULL);
 }
 
-void	ft_exit(const int code, const char *message)
+void				ft_exit(const int code, const char *message)
 {
 	const char		*rc_message = get_return_code_message(code);
 

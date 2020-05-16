@@ -12,7 +12,7 @@
 
 #include <ft_tpointer_keeper.h>
 
-void 	**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
+void	**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
 {
 	char 			**matrix;
 	size_t 			i;

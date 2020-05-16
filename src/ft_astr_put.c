@@ -12,7 +12,7 @@
 
 #include <libft.h>
 
-size_t 		ft_astr_put(char **astr)
+size_t	ft_astr_put(char **astr)
 {
 	size_t		written_bytes;
 	size_t		current_written;

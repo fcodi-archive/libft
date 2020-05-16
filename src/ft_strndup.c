@@ -12,9 +12,9 @@
 
 #include <libft.h>
 
-char 		*ft_strndup(const char *string, size_t n)
+char	*ft_strndup(const char *string, size_t n)
 {
-	char 	*new_string;
+	char	*new_string;
 
 	if (!(new_string = ft_strnew(n)))
 		return (NULL);

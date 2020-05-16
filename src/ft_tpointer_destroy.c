@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tpointer_destroy.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/04 13:42:21 by fcodi             #+#    #+#             */
+/*   Updated: 2020/02/06 18:45:36 by fcodi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_tpointer_keeper.h>
 
 void	destroy_tpointer_by_ptr(t_pointer_keeper *keeper, void *ptr)
@@ -11,7 +23,7 @@ void	destroy_tpointer_by_ptr(t_pointer_keeper *keeper, void *ptr)
 		keeper->destroy_current(keeper);
 }
 
-void 				destroy_tpointer(t_pointer *pointer)
+void	destroy_tpointer(t_pointer *pointer)
 {
 	if (!pointer)
 		return ;
@@ -24,7 +36,7 @@ void 				destroy_tpointer(t_pointer *pointer)
 	pointer = NULL;
 }
 
-void 				destroy_tpointer_current(t_pointer_keeper *keeper)
+void	destroy_tpointer_current(t_pointer_keeper *keeper)
 {
 	if (!keeper || !keeper->current)
 		return ;
@@ -35,7 +47,7 @@ void 				destroy_tpointer_current(t_pointer_keeper *keeper)
 	keeper->attr.pointer_count--;
 }
 
-void				destroy_tpointer_with_attr(t_pointer *pointer,
+void	destroy_tpointer_with_attr(t_pointer *pointer,
 		t_pointer_keeper_attr *attr)
 {
 	const _Bool		attr_default = attr ? FALSE : TRUE;
