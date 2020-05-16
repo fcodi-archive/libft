@@ -14,8 +14,8 @@
 
 void	**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
 {
-	char 			**matrix;
-	size_t 			i;
+	char		**matrix;
+	size_t		i;
 
 	matrix = NULL;
 	if (!keeper)
@@ -42,9 +42,9 @@ void	**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
 	return ((void **)matrix);
 }
 
-_Bool 	add_matrix_to_tpointer_array(t_pointer_keeper *keeper, void **matrix)
+_Bool	add_matrix_to_tpointer_array(t_pointer_keeper *keeper, void **matrix)
 {
-	size_t 		i;
+	size_t		i;
 
 	if (!keeper || !matrix)
 		return (FALSE);

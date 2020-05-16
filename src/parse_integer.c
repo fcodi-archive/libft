@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_integer.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/04 13:42:21 by fcodi             #+#    #+#             */
+/*   Updated: 2020/02/06 18:45:36 by fcodi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_atox.h>
 
 char	*cut_parse_integer(const char *string)
@@ -52,4 +64,3 @@ char	**parse_integers(const char *string)
 		}
 	return ((char **)keeper->convert(keeper));
 }
-

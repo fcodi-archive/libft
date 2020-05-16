@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   string_array_size.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/04 13:42:21 by fcodi             #+#    #+#             */
+/*   Updated: 2020/02/06 18:45:36 by fcodi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_string_array.h>
 
-size_t 	get_string_array_size(char **string_array)
+size_t	get_string_array_size(char **string_array)
 {
 	size_t	size;
 

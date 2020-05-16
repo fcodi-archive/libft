@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_word_end_pointer.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/04 13:42:21 by fcodi             #+#    #+#             */
+/*   Updated: 2020/02/06 18:45:36 by fcodi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_atox.h>
 
 char		*get_word_end_pointer(const char *string, const char *alphabet)
 {
 	const char		*word_start = get_word_start_pointer(string, alphabet);
-	size_t 			i;
+	size_t			i;
 
 	if (!word_start)
 		return (NULL);

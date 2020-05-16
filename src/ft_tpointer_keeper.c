@@ -34,7 +34,7 @@ void				destroy_tpointer_last_count(t_pointer_keeper *keeper,
 		return ;
 	keeper->current = keeper->tail;
 	while (--count && keeper->current->prev
-		   && (keeper->current = keeper->current->prev))
+			&& (keeper->current = keeper->current->prev))
 		destroy_tpointer_with_attr(keeper->current->next, &keeper->attr);
 }
 

@@ -12,13 +12,6 @@
 
 #include "ft_unicode.h"
 
-/**
-**
-** @param word32 - machine word32 with
-** @return count of octet, needed to save unicode symbol (wchar_t)
-**
-**/
-
 unsigned			get_octet_count(const uint32_t word32)
 {
 	if (word32 <= UTF8_LIMIT_ONE_OCTET_MAX_VALUE)
@@ -35,14 +28,7 @@ unsigned			get_octet_count(const uint32_t word32)
 	return (0);
 }
 
-/**
-**
-** @param octet_count needed to save unicode char in it
-** @return constant string contain bit mask
-**
-**/
-
-char 				*get_head_mask(const unsigned octet_count)
+char				*get_head_mask(const unsigned octet_count)
 {
 	if (octet_count == 2)
 		return (UTF8_MASK_HEAD_TWO);
@@ -53,14 +39,7 @@ char 				*get_head_mask(const unsigned octet_count)
 	return (0);
 }
 
-/**
- *
- * @param utf
- * @param wchar
- * @return
- */
-
-static _Bool 		init_tutf8(t_utf8 *utf, const wchar_t wchar)
+static _Bool		init_tutf8(t_utf8 *utf, const wchar_t wchar)
 {
 	if (!utf || (utf->octet_count = get_octet_count(wchar)) == 1)
 		return (FALSE);
@@ -71,16 +50,10 @@ static _Bool 		init_tutf8(t_utf8 *utf, const wchar_t wchar)
 	return (TRUE);
 }
 
-/**
- *
- * @param utf
- * @return
- */
-
-static char 		get_utf8_symbol_next_part(t_utf8 utf)
+static char			get_utf8_symbol_next_part(t_utf8 utf)
 {
 	uint8_t		shift;
-	uint8_t 	result;
+	uint8_t		result;
 
 	shift = utf.current_char == utf.octet_count - 1
 			? 0 : 8 + (2 * utf.current_word);
@@ -91,13 +64,7 @@ static char 		get_utf8_symbol_next_part(t_utf8 utf)
 	return ((char)result);
 }
 
-/**
- *
- * @param wchar
- * @return
- */
-
-char 				*wchar_to_string(wchar_t wchar)
+char				*wchar_to_string(wchar_t wchar)
 {
 	t_utf8				utf;
 	char				*string;

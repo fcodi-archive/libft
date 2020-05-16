@@ -52,9 +52,9 @@ _Bool	set_mask(uint8_t *word, const char *mask)
 char	*get_mask(const uint8_t word)
 {
 	const int8_t		n_shift = byte_shift();
-	char 				*mask;
+	char				*mask;
 	uint8_t				i;
-	uint8_t 			n;
+	uint8_t				n;
 
 	if ((BYTE_ORDER != LITTLE_ENDIAN && BYTE_ORDER != BIG_ENDIAN)
 		|| !(mask = ft_strnew(8)))
