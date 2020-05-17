@@ -1,39 +1,60 @@
+ifndef FLAGS_MK
+FLAGS_MK :=
+
+include $(MK)/function.mk
+
 # **************************************************************************** #
-#	Flags
+#	ARFLAGS
 # **************************************************************************** #
 
-WARNING_FLAGS = -Wall -Wextra -Werror
-
-override CC = gcc
-
+ifeq ($(suffix $(NAME)),.a)
 ifeq ($(OS),Linux)
 override ARFLAGS = rcsU
 else
 override ARFLAGS = rcs
 endif
+endif
 
-override CFLAGS += $(WARNING_FLAGS) \
-	$(foreach PATH,$(_INCLUDE_PATH),$(addprefix -I,$(PATH)))
+# **************************************************************************** #
+#	CFLAGS
+# **************************************************************************** #
 
-ifdef LIBRARY_FILES
-ifneq ($(LIBRARY_FILES),)
-_LIBRARY_PATH := $(sort $(LIBRARY_PATH) \
-	$(foreach FILE,$(LIBRARY_FILES), $(filter-out . ./,$(dir $(FILE)))))
-_LIBRARY_NAME = $(foreach FILE,$(LIBRARY_FILES), \
+CFLAGS_PATH = $(call _UNIQ, \
+	$(filter-out . ./,$(dir $(INCLUDE_FILES))) $(INCLUDE_PATH))
+
+override CFLAGS += $(foreach _PATH,$(CFLAGS_PATH), \
+	$(shell [ -d $(_PATH) ] && echo $(addprefix -I,$(_PATH))))
+
+# **************************************************************************** #
+#	LDFLAGS
+# **************************************************************************** #
+
+LDFLAGS_FILES := $(foreach _FILE,$(LDFLAGS_FILES), \
+	$(shell [ -f $(_FILE) ] && echo $(_FILE)))
+
+ifeq ($(OS),Darwin)
+LDFLAGS_PATH := $(call _UNIQ, $(filter-out . ./,$(dir \
+	$(filter %.a %.so %.dylib,$(LDFLAGS_FILES)))) $(LIBRARY_PATH))
+LDFLAGS_NAME := $(call _UNIQ, \
 	$(patsubst lib%,%,$(basename $(filter %.a %.so %.dylib, \
-	$(notdir $(shell find $(_LIBRARY_PATH) -name "$(notdir $(FILE))"))))))
-override LDFLAGS += $(foreach FILE,$(_LIBRARY_NAME),$(addprefix -l,$(FILE)))
-endif
+	$(notdir $(LDFLAGS_FILES))))))
+else
+LDFLAGS_PATH := $(call _UNIQ, $(filter-out . ./,$(dir $(filter %.a %.so, \
+	$(LDFLAGS_FILES)))) $(LIBRARY_PATH))
+LDFLAGS_NAME := $(call _UNIQ, \
+	$(patsubst lib%,%,$(basename $(filter %.a %.so, \
+	$(notdir $(LDFLAGS_FILES))))))
 endif
 
-ifdef LIBRARY_PATH
-_LIBRARY_PATH += $(sort $(LIBRARY_PATH) \
-	$(foreach FILE,$(LIBRARY_FILES), $(filter-out . ./,$(dir $(FILE)))))
-endif
+LDFLAGS_PATH := $(foreach _PATH,$(LDFLAGS_PATH), \
+	$(shell [ -d $(_PATH) ] && echo $(_PATH)))
 
-ifdef _LIBRARY_PATH
-ifneq ($(_LIBRARY_PATH),)
-override LDFLAGS += $(foreach PATH,$(sort $(_LIBRARY_PATH)), \
-	$(addprefix -L,$(PATH)))
-endif
+LIBRARY_PATH += $(LDFLAGS_PATH)
+
+override LDFLAGS += $(foreach _PATH,$(LDFLAGS_PATH), \
+	$(addprefix -L,$(_PATH)))
+
+override LDFLAGS += $(foreach _NAME,$(LDFLAGS_NAME), \
+	$(addprefix -l,$(_NAME)))
+
 endif

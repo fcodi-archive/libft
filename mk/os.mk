@@ -1,3 +1,6 @@
+ifndef OS_MK
+OS_MK :=
+
 # **************************************************************************** #
 #	Detect OS
 # **************************************************************************** #
@@ -20,4 +23,9 @@ SH = $(shell dscl . -read $(HOME) UserShell | grep -Eo "/bin/\w*sh")
 endif
 ifeq ($(OS),Linux)
 SH = $(shell grep "^$(USER)" /etc/passwd | grep -Eo "/bin/\w*sh")
+endif
+ifeq ($(SH),)
+$(error Can't detect user shell)
+endif
+
 endif
