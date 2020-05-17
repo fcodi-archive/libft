@@ -6,20 +6,20 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 14:48:08 by fcodi             #+#    #+#             */
-/*   Updated: 2020/02/06 19:18:24 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/05/17 19:29:30 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_tpointer_keeper.h>
 
-static void	**converter_destroy(t_pointer_keeper *keeper)
+static void		**converter_destroy(t_pointer_keeper *keeper)
 {
 	keeper->attr.destroy_ptr = TRUE;
 	destroy_tpointer_keeper(&keeper);
 	return (NULL);
 }
 
-void		**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
+void			**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
 {
 	char		**matrix;
 	size_t		i;
@@ -46,7 +46,7 @@ void		**convert_tpointer_keeper_to_matrix(t_pointer_keeper *keeper)
 	return ((void **)matrix);
 }
 
-_Bool		add_matrix_to_tpointer_array(t_pointer_keeper *keeper, void **matrix)
+_Bool			add_matrix_to_keeper(t_pointer_keeper *keeper, void **matrix)
 {
 	size_t		i;
 

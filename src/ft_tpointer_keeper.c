@@ -65,7 +65,7 @@ t_pointer_keeper	*new_tpointer_keeper(void)
 	keeper->convert = convert_tpointer_keeper_to_matrix;
 	keeper->destroy_attr = destroy_tpointer_with_attr;
 	keeper->destroy_last_count = destroy_tpointer_last_count;
-	keeper->matrix_convert = add_matrix_to_tpointer_array;
+	keeper->matrix_convert = add_matrix_to_keeper;
 	keeper->find_by_ptr = get_tpointer_by_ptr;
 	keeper->destroy_by_ptr = destroy_tpointer_by_ptr;
 	return (keeper);

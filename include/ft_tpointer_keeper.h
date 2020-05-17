@@ -33,7 +33,7 @@ void					destroy_tpointer_with_attr(t_pointer *pointer,
 						t_pointer_keeper_attr *attr);
 void					destroy_tpointer_last_count(t_pointer_keeper *keeper,
 						size_t count);
-_Bool					add_matrix_to_tpointer_array(
+_Bool					add_matrix_to_keeper(
 						t_pointer_keeper *keeper,
 						void **matrix);
 void					copy_tpointer_keeper_attr(
