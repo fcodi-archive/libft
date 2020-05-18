@@ -43,6 +43,7 @@ OBJECT_FILES ?= $(SOURCE_FILES:.c=.o)
 override CC = gcc
 
 include $(MK)/flags.mk
+include $(MK)/var.mk
 
 WARNING_FLAGS := -Wall -Wextra -Werror
 
@@ -95,6 +96,7 @@ vpath %.h $(INCLUDE_SEARCH)
 vpath %.o $(OBJECT_PATH)
 vpath %.a $(LIBRARY_PATH)
 vpath %.so $(LIBRARY_PATH)
+vpath %.var $(VARIABLE_PATH)
 ifeq ($(OS),Darwin)
 vpath %.dylib $(LIBRARY_PATH)
 endif

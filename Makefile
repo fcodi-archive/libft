@@ -6,7 +6,7 @@
 #    By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 17:56:52 by fcodi             #+#    #+#              #
-#    Updated: 2020/05/17 19:22:50 by fcodi            ###   ########.fr        #
+#    Updated: 2020/05/18 17:22:49 by fcodi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ Makefile : ; @
 % :: all ; @
 
 clean:
-	$(RM)r $(OBJECT_PATH)
+	$(RM)r $(OBJECT_PATH) var
 
 fclean: clean
 	$(RM) $(NAME)
@@ -55,13 +55,13 @@ else
 include ../settings.mk
 include $(MK)/prefix.mk
 
+$(eval $(call _CHECK_VARIABLE,$(VARIABLE)))
+
 all: $(NAME)
 
-ifeq ($(suffix $(NAME)),.a)
-$(NAME): $(NAME)($(OBJECT_FILES) $(INCLUDE_FILES))
-else
+$(OBJECT_FILES): $(VARIABLE_FILES)
+
 $(NAME): $(OBJECT_FILES) $(INCLUDE_FILES)
-	$(CC) $(filter %.o,$^) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
-endif
+$(NAME): $(NAME)($(OBJECT_FILES) $(INCLUDE_FILES))
 
 endif
