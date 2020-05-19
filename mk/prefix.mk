@@ -85,6 +85,16 @@ _lpath:
 else
 _lpath:
 	@echo $(LIBRARY_PATH)
+ifneq ($(OS),Darwin)
+ifeq ($(wildcard $(NAME).sh),)
+WRAPPER = $(NAME).sh
+$(shell echo "#!/usr/bin/env sh" >> $(WRAPPER) \
+&& echo "" >> $(WRAPPER)\
+&& echo env LD_LIBRARY_PATH=\"$(PREFIX)/lib:$(LD_LIBRARY_PATH)\" \
+./$(notdir $(NAME)) "$$""*" >> $(WRAPPER))
+$(shell chmod +x $(WRAPPER))
+endif
+endif
 endif
 
 $(eval $(call _CHECK_VARIABLE,$(VARIABLE)))

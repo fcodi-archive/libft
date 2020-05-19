@@ -6,7 +6,7 @@
 /*   By: bbear <bbear@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 10:02:08 by bbear             #+#    #+#             */
-/*   Updated: 2020/05/19 10:00:17 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/05/19 18:13:32 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # define TRUE 1
 
 # include <stdlib.h>
+# ifdef __linux
+#  include <stdint.h>
+# endif
 
 void			set_bit(uint8_t *word, unsigned bit_index);
 void			unset_bit(uint8_t *word, unsigned bit_index);
