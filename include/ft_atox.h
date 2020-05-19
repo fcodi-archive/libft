@@ -12,9 +12,6 @@
 
 #ifndef FT_ATOX_H
 # define FT_ATOX_H
-# define CHARSET_INTEGER "+-1234567890"
-# define VALID_FLOAT_CHARS_EX "1234567890.-+"
-# define VALID_FLOAT_CHARS "1234567890.-+Ee"
 # include <libft.h>
 # include <ft_bool.h>
 # include <math.h>

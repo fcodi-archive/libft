@@ -12,7 +12,7 @@
 
 #ifndef FT_TPOINTER_KEEPER_STRUCTS_H
 # define FT_TPOINTER_KEEPER_STRUCTS_H
-# include "ft_bool.h"
+# include <ft_bool.h>
 # include <stdlib.h>
 
 typedef struct s_pointer		t_pointer;
