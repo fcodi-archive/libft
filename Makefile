@@ -55,8 +55,6 @@ else
 include ../settings.mk
 include $(MK)/prefix.mk
 
-$(eval $(call _CHECK_VARIABLE,$(VARIABLE)))
-
 all: $(NAME)
 
 $(OBJECT_FILES): $(VARIABLE_FILES)

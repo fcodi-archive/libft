@@ -53,7 +53,7 @@ WARNING_FLAGS := -Wall -Wextra -Werror
 
 .PHONY: all debug  _cflags _ldflags _cppflags _ipath _lpath
 
-debug: all ; @
+debug: all
 
 $(NAME): override CFLAGS := $(WARNING_FLAGS) $(CFLAGS)
 ifneq ($(findstring debug,$(MAKECMDGOALS)),)
@@ -86,6 +86,8 @@ else
 _lpath:
 	@echo $(LIBRARY_PATH)
 endif
+
+$(eval $(call _CHECK_VARIABLE,$(VARIABLE)))
 
 # **************************************************************************** #
 #	Path search

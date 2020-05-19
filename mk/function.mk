@@ -36,6 +36,7 @@ endef
 include $(MK)/var.mk
 
 define _CHECK_VARIABLE
+$(shell test -d $(VARIABLE_PATH) || mkdir -p $(VARIABLE_PATH))
 $(foreach VAR,$1, \
 	$(shell test "$(call _CAT_FILE,$(VARIABLE_PATH)/$(VAR))" \
 	!= "$(call _VARIABLE_HASHSUM,$(VAR))" \
