@@ -18,8 +18,6 @@
 # define TRUE 1
 
 # include <stdlib.h>
-# include <stdint.h>
-# include <stddef.h>
 
 void			set_bit(uint8_t *word, unsigned bit_index);
 void			unset_bit(uint8_t *word, unsigned bit_index);
