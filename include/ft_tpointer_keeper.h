@@ -6,15 +6,15 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 13:40:09 by fcodi             #+#    #+#             */
-/*   Updated: 2020/02/13 18:04:30 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/05/20 09:56:26 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_TPOINTER_KEEPER_H
 # define FT_TPOINTER_KEEPER_H
-# include "ft_bool.h"
+# include <ft_bool.h>
 # include <stdlib.h>
-# include "ft_tpointer_keeper_structs.h"
+# include <ft_tpointer_keeper_structs.h>
 
 _Bool					add_tpointer(t_pointer_keeper *keeper, void *ptr);
 void					destroy_tpointer(t_pointer *pointer);

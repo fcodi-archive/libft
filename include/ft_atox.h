@@ -6,7 +6,7 @@
 /*   By: bbear <bbear@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 10:01:03 by bbear             #+#    #+#             */
-/*   Updated: 2020/05/19 18:13:32 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/05/20 09:54:26 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ _Bool				ft_atox_validate_number(const char *number,
 _Bool				ft_is_base_digit(const char n,
 		const unsigned short base);
 int					ft_get_base_digit(const char n);
-
 char				*combine_strings(const char **astr, _Bool free_astr);
 char				**parse_integer_array(const char *string);
 size_t				get_word_end_position(const char *string,
@@ -49,11 +48,9 @@ char				*float_parser_ex(const char *string);
 long double			ft_atold_ex(const char *number);
 double				ft_atod_ex(const char *number);
 float				ft_atof_ex(const char *number);
-
 char				*cut_parse_integer(const char *string);
 char				*parse_integer(const char *string);
 char				**parse_integers(const char *string);
-
 char				*cut_parse_float_ex(const char *string);
 char				*parse_float_ex(const char *string);
 char				**parse_floats_ex(const char *string);
