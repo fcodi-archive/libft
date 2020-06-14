@@ -6,7 +6,7 @@
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 13:42:21 by fcodi             #+#    #+#             */
-/*   Updated: 2020/02/06 18:45:36 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/06/14 17:41:16 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_free(void *ptr)
 {
-	static t_garbage_collector		*collector = NULL;
+	static t_pointer_keeper		*collector = NULL;
 
 	if (!ptr)
 		return ;
@@ -22,12 +22,12 @@ void	ft_free(void *ptr)
 		collector = get_garbage_collector();
 	if (ptr == ft_free && collector)
 	{
-		destroy_tpointer_keeper((t_pointer_keeper **)&collector);
+		destroy_pointer_keeper(&collector);
 		collector = NULL;
 	}
 	if (collector)
 	{
-		destroy_tpointer_by_ptr(collector, ptr);
+		destroy_pointer_by_ptr(collector, ptr);
 		ptr = NULL;
 	}
 }

@@ -56,7 +56,7 @@ char	**parse_floats_ex(const char *string)
 	char				*string_pointer;
 	char				*result;
 
-	if (!string || !(keeper = new_tpointer_keeper()))
+	if (!string || !(keeper = new_pointer_keeper()))
 		return (NULL);
 	string_pointer = (char *)string;
 	while (string_pointer && *string_pointer)
@@ -67,7 +67,7 @@ char	**parse_floats_ex(const char *string)
 		else
 		{
 			free(result);
-			destroy_tpointer_keeper(&keeper);
+			destroy_pointer_keeper(&keeper);
 			return (NULL);
 		}
 	return ((char **)keeper->convert(keeper));

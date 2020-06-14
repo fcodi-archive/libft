@@ -6,7 +6,7 @@
 /*   By: fcodi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 16:18:57 by fcodi             #+#    #+#             */
-/*   Updated: 2020/02/04 18:16:31 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/06/14 17:14:16 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@
 # include <ft_bool.h>
 # include <ft_complex.h>
 # include <ft_atox.h>
-# include <ft_tpointer_keeper.h>
-# include <ft_garbage_collector.h>
+# include <ft_pointer_keeper.h>
 # include <get_next_line.h>
 # include <ft_string.h>
 # include <ft_string_array.h>

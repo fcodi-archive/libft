@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tpointer.c                                      :+:      :+:    :+:   */
+/*   ft_pointer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 13:42:21 by fcodi             #+#    #+#             */
-/*   Updated: 2020/02/06 18:45:36 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/06/14 17:48:28 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_tpointer_keeper.h"
+#include "ft_pointer_keeper.h"
 
-t_pointer			*new_tpointer(void)
+t_pointer			*new_pointer(void)
 {
 	t_pointer	*pointer;
 
@@ -24,13 +24,13 @@ t_pointer			*new_tpointer(void)
 	return (pointer);
 }
 
-_Bool				add_tpointer(t_pointer_keeper *keeper, void *ptr)
+_Bool				add_pointer(t_pointer_keeper *keeper, void *ptr)
 {
 	if (!keeper || (!keeper->attr.add_null_ptr && !ptr))
 		return (FALSE);
 	if (keeper->tail)
 		keeper->current = keeper->tail;
-	if (!(keeper->tail = new_tpointer()))
+	if (!(keeper->tail = new_pointer()))
 		return (FALSE);
 	keeper->tail->ptr = ptr;
 	if (keeper->current)

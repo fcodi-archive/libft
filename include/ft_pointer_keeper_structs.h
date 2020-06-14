@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tpointer_keeper_structs.h                       :+:      :+:    :+:   */
+/*   ft_pointer_keeper_structs.h                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 13:40:09 by fcodi             #+#    #+#             */
-/*   Updated: 2020/05/20 09:54:01 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/06/14 17:45:48 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_TPOINTER_KEEPER_STRUCTS_H
-# define FT_TPOINTER_KEEPER_STRUCTS_H
+#ifndef FT_POINTER_KEEPER_STRUCTS_H
+# define FT_POINTER_KEEPER_STRUCTS_H
 # include <ft_bool.h>
 # include <stdlib.h>
 

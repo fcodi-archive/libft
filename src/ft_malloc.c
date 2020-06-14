@@ -14,7 +14,7 @@
 
 void	*ft_malloc(const size_t size)
 {
-	static t_garbage_collector	*collector = NULL;
+	static t_pointer_keeper	*collector = NULL;
 	void						*ptr;
 
 	if (!size || !(ptr = malloc(size)))

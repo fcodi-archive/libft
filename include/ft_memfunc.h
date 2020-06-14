@@ -6,7 +6,7 @@
 /*   By: bbear <bbear@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 10:03:51 by bbear             #+#    #+#             */
-/*   Updated: 2020/05/16 10:03:51 by bbear            ###   ########.fr       */
+/*   Updated: 2020/06/14 17:16:46 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_MEMFUNC_H
 
 # include <stdlib.h>
-# include <ft_garbage_collector.h>
+# include <ft_pointer_keeper_structs.h>
 # include <libft.h>
 # define EXIT_MESSAGE __PRETTY_FUNCTION__
 # define RC_OK ""
@@ -32,6 +32,7 @@ typedef enum	e_return_code
 	rc_initialize_fail
 }				t_return_code;
 
+t_pointer_keeper	*get_garbage_collector(void);
 void	ft_exit(const int code, const char *message);
 void	*ft_calloc(const size_t nmemb, const size_t size);
 void	*ft_realloc(void *ptr, size_t size);

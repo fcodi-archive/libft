@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tpointer_keeper_get.c                           :+:      :+:    :+:   */
+/*   ft_pointer_keeper_get.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcodi <fcodi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 13:42:21 by fcodi             #+#    #+#             */
-/*   Updated: 2020/02/06 18:45:36 by fcodi            ###   ########.fr       */
+/*   Updated: 2020/06/14 17:48:09 by fcodi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_tpointer_keeper.h>
+#include <ft_pointer_keeper.h>
 
-t_pointer	*get_tpointer_by_ptr(t_pointer_keeper *keeper, void *ptr)
+t_pointer	*get_pointer_by_ptr(t_pointer_keeper *keeper, void *ptr)
 {
 	if (!keeper || !keeper->current)
 		return (NULL);

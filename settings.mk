@@ -24,7 +24,7 @@ SOURCE_FILES = convert_string_array.c \
 	ft_strncmp.c \
 	ft_strcmp.c \
 	ft_itoa.c \
-	ft_tpointer_keeper_converter.c \
+	ft_pointer_keeper_converter.c \
 	ft_csub.c \
 	ft_strsplit.c \
 	ft_astr_len.c \
@@ -36,11 +36,11 @@ SOURCE_FILES = convert_string_array.c \
 	ft_memcpy.c \
 	ft_astr_tolower.c \
 	get_word_start_pointer.c \
-	ft_tpointer_keeper_get.c \
+	ft_pointer_keeper_get.c \
 	ft_strcpy.c \
 	ft_astr_del.c \
 	ft_atof_ex.c \
-	ft_tpointer_keeper_attr.c \
+	ft_pointer_keeper_attr.c \
 	new_string.c \
 	ft_lstiter.c \
 	ft_bit_endian.c \
@@ -118,7 +118,7 @@ SOURCE_FILES = convert_string_array.c \
 	ft_exit.c \
 	ft_strcat.c \
 	ft_atoi_base.c \
-	ft_tpointer_destroy.c \
+	ft_pointer_destroy.c \
 	ft_strclr.c \
 	ft_putendl_fd.c \
 	ft_strrchr.c \
@@ -126,7 +126,7 @@ SOURCE_FILES = convert_string_array.c \
 	destroy_string_array.c \
 	ft_striteri.c \
 	ft_memmove.c \
-	ft_tpointer.c \
+	ft_pointer.c \
 	ft_atoll_base.c \
 	ft_isspace.c \
 	ft_strnchri.c \
@@ -137,7 +137,7 @@ SOURCE_FILES = convert_string_array.c \
 	ft_strchr.c \
 	ft_lstadd.c \
 	ft_astr_put.c \
-	ft_tpointer_keeper.c \
+	ft_pointer_keeper.c \
 	ft_isascii.c \
 	ft_strdel.c \
 	ft_nsym.c \
@@ -151,8 +151,7 @@ INCLUDE_FILES = ft_atox.h \
 	libft.h \
 	ft_string.h \
 	ft_bool.h \
-	ft_garbage_collector.h \
-	ft_tpointer_keeper_structs.h \
+	ft_pointer_keeper_structs.h \
 	ft_string_array.h \
-	ft_tpointer_keeper.h \
+	ft_pointer_keeper.h \
 	ft_memfunc.h
