@@ -18,6 +18,7 @@ endif
 #	Detect user shell
 # **************************************************************************** #
 
+#TODO Перепроверить необходимость напрямую обращаться к бинарнику *sh (shell)
 ifeq ($(OS),Darwin)
 SH = $(shell dscl . -read $(HOME) UserShell | grep -Eo "/bin/\w*sh")
 endif
@@ -25,7 +26,8 @@ ifeq ($(OS),Linux)
 SH = $(shell grep "^$(USER)" /etc/passwd | grep -Eo "/bin/\w*sh")
 endif
 ifeq ($(SH),)
-$(error Can't detect user shell)
+$(warning Shell binary not found, set by default /usr/bin/env sh)
+SH = /usr/bin/env sh
 endif
 
 endif
