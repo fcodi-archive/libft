@@ -4,6 +4,7 @@
 
 PREFIX ?= $(CURDIR)
 
+#TODO Фильтр правил НЕ РАБОТАЕТ - почему?
 FILTER_RULES = all debug _cflags _ldflags _ipath _lpath _cppflags
 
 ifeq ($(notdir $(CURDIR)),libft)
