@@ -47,12 +47,10 @@ endef
 #	Text function
 # **************************************************************************** #
 
-define _TO_UPPER
-$(shell echo '$1' | tr '[:lower:]' '[:upper:]')
-endef
+_TO_UPPER = $(shell echo '$1' | tr '[:lower:]' '[:upper:]')
 
-define _TO_LOWER
-$(shell echo '$1' | tr '[:upper:]' '[:lower:]')
-endef
+_TO_LOWER = $(shell echo '$1' | tr '[:upper:]' '[:lower:]')
+
+
 
 endif
