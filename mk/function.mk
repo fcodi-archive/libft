@@ -43,4 +43,16 @@ $(foreach VAR,$1, \
 	&& echo "$(call _VARIABLE_HASHSUM,$(VAR))" > $(VARIABLE_PATH)/$(VAR)))
 endef
 
+# **************************************************************************** #
+#	Text function
+# **************************************************************************** #
+
+define _TO_UPPER
+$(shell echo '$1' | tr '[:lower:]' '[:upper:]')
+endef
+
+define _TO_LOWER
+$(shell echo '$1' | tr '[:upper:]' '[:lower:]')
+endef
+
 endif
