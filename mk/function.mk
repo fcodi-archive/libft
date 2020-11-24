@@ -51,6 +51,4 @@ _TO_UPPER = $(shell echo '$1' | tr '[:lower:]' '[:upper:]')
 
 _TO_LOWER = $(shell echo '$1' | tr '[:upper:]' '[:lower:]')
 
-
-
 endif
