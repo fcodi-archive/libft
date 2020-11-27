@@ -2,6 +2,17 @@ ifndef FUNCTION_MK
 FUNCTION_MK := $(LIBFT_MK_PATH)/function.mk
 
 # **************************************************************************** #
+#	Configure
+# **************************************************************************** #
+
+CONFIGURE_FLAGS = --prefix="$(BREW_PREFIX)" --exec-prefix="$(BREW_PREFIX)" \
+	--oldincludedir="$(BREW_INCLUDE)" --datarootdir="$(BREW_SHARE)"
+
+_CONFIGURE = cd $1; ./configure $(CONFIGURE_FLAGS)
+
+_CONFIGURE_WITH_FLAGS = cd $1; ./configure $2
+
+# **************************************************************************** #
 #	List function
 # **************************************************************************** #
 
