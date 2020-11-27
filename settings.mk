@@ -4,12 +4,17 @@
 
 PREFIX ?= $(CURDIR)
 
+#TODO Провести больше тестов
+#BREW_DEPENDENCY = wget chromedriver неСуществующаяЗависимость
+
 #TODO Фильтр правил НЕ РАБОТАЕТ - почему?
 FILTER_RULES = all debug _cflags _ldflags _ipath _lpath _cppflags
 
 ifeq ($(notdir $(CURDIR)),libft)
 MK ?= $(PREFIX)/mk
 endif
+
+#TODO Рассмотреть возможность переноса стандартных настроек в другой файл
 
 OBJECT_DIRECTORY = .obj
 
@@ -21,7 +26,7 @@ OBJECT_PATH ?= $(PREFIX)/$(OBJECT_DIRECTORY)
 
 NAME := $(PREFIX)/libft.a
 
-SOURCE_FILES = convert_string_array.c \
+SOURCE_FILES ?= convert_string_array.c \
 	ft_strncmp.c \
 	ft_strcmp.c \
 	ft_itoa.c \
@@ -146,7 +151,7 @@ SOURCE_FILES = convert_string_array.c \
 	ft_isalpha.c \
 	ft_cdiv.c
 
-INCLUDE_FILES = ft_atox.h \
+INCLUDE_FILES ?= ft_atox.h \
 	get_next_line.h \
 	ft_complex.h \
 	libft.h \
