@@ -67,5 +67,17 @@ ifdef LDFLAGS
 $1 += LDFLAGS="$(LDFLAGS)"
 endif
 
+ifdef CLEAN_LIST
+$1 += CLEAN_LIST="$(CLEAN_LIST)"
+endif
+
+ifdef FCLEAN_LIST
+$1 += FCLEAN_LIST="$(FCLEAN_LIST)"
+endif
+
+ifdef UNINSTALL_LIST
+$1 += UNINSTALL_LIST="$(UNINSTALL_LIST)"
+endif
+
 endef
 endif
