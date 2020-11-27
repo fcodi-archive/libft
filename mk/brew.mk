@@ -13,10 +13,12 @@
 ifndef BREW_MK
 BREW_MK := $(MK)/brew.mk
 
+all:
+
 include $(MK)/function.mk
 
 # **************************************************************************** #
-#	Environment variables
+#	Variable
 # **************************************************************************** #
 
 BREW_DIRECTORY = .brew
@@ -49,18 +51,7 @@ BREW_DOC = $(BREW_PATH)/docs
 
 BREW_CELLAR = $(BREW_PATH)/Cellar
 
-BREW = $(BREW_BIN)/_brew
-
-# **************************************************************************** #
-#	Configure
-# **************************************************************************** #
-
-CONFIGURE_FLAGS = --prefix="$(BREW_PREFIX)" --exec-prefix="$(BREW_PREFIX)" \
-	--oldincludedir="$(BREW_INCLUDE)" --datarootdir="$(BREW_SHARE)"
-
-_CONFIGURE = cd $1; ./configure $(CONFIGURE_FLAGS)
-
-_CONFIGURE_WITH_FLAGS = $(_CONFIGURE) $2
+BREW = $(BREW_BIN)/brew
 
 # **************************************************************************** #
 #	Brew install
@@ -87,5 +78,22 @@ reinstall: uninstall install
 ifeq ($(MAKECMDGOALS),uninstall)
 UNINSTALL_LIST += $(BREW_PATH)
 endif
+
+# **************************************************************************** #
+#	Brew dependency
+# **************************************************************************** #
+
+include $(MK)/which.mk
+
+all: $(BREW_DEPENDENCY)
+
+$(BREW_DEPENDENCY):: $(WHICH)
+	-@$(WHICH) $@ 1>/dev/null 2>/dev/null && exit\
+	|| $(BREW) info $@ 1>/dev/null || exit\
+	&& $(BREW) info $@ | grep "From:" | grep "Formula" 1>/dev/null\
+	&& $(BREW) install $@ && exit\
+	|| $(BREW) info $@ | grep "From:" | grep "Casks" 1>/dev/null\
+	&& $(BREW) cask install $@ && exit\
+	|| echo "Undefined type of brew element $@"
 
 endif
