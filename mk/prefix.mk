@@ -55,10 +55,16 @@ WARNING_FLAGS := -Wall -Wextra -Werror
 
 debug: all
 
+#TODO Убедиться что этому здесь место или перенести в иной файл
+#	Например в prefix.mk
 $(NAME): override CFLAGS := $(WARNING_FLAGS) $(CFLAGS)
 ifneq ($(findstring debug,$(MAKECMDGOALS)),)
 $(NAME): override CFLAGS := -g3 $(CFLAGS)
 endif
+
+# **************************************************************************** #
+#	Rule that print value of environment variable
+# **************************************************************************** #
 
 _cflags:
 	@echo $(CFLAGS)
@@ -85,6 +91,11 @@ _lpath:
 else
 _lpath:
 	@echo $(LIBRARY_PATH)
+
+# **************************************************************************** #
+#	Wrapper
+# **************************************************************************** #
+
 ifneq ($(OS),Darwin)
 ifeq ($(wildcard $(NAME).sh),)
 WRAPPER = $(NAME).sh
@@ -96,6 +107,10 @@ $(shell chmod +x $(WRAPPER))
 endif
 endif
 endif
+
+# **************************************************************************** #
+#	Check hashsum of environment variable
+# **************************************************************************** #
 
 $(eval $(call _CHECK_VARIABLE,$(VARIABLE)))
 
